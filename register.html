@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Explore Our India</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Register to Explore Our India</h1>
+  </header>
+
+  <main>
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Full Name" required />
+      <input type="email" id="regEmail" placeholder="Email" required />
+      <input type="password" id="regPassword" placeholder="Password" required />
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </main>
+
+  <!-- Firebase Libraries -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    // 🔥 Firebase configuration (from your project)
+    const firebaseConfig = {
+      apiKey: "AIzaSyA2_pMk1wu_uEGWONmSbvVCmGp6ixUVr8Y",
+      authDomain: "exploreourindia.firebaseapp.com",
+      projectId: "exploreourindia",
+      storageBucket: "exploreourindia.firebasestorage.app",
+      messagingSenderId: "633212741399",
+      appId: "1:633212741399:web:208cb4bc7bf8d62841f952",
+      measurementId: "G-0QFH7C9G17"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // 🔐 Handle registration form
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+
+      try {
+        const userCred = await auth.createUserWithEmailAndPassword(email, password);
+        await db.collection("users").doc(userCred.user.uid).set({
+          name,
+          email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        alert("🎉 Registration successful! Welcome to Explore Our India");
+        window.location.href = "index.html";
+      } catch (error) {
+        alert("⚠️ " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
