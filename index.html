@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Our India</title>
+  
+  <title>Explore Our India | Discover Top Destinations & Culture</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore Our India – Discover top tourist destinations, cultural experiences, beaches, forts, and heritage across India.">
+  <meta name="keywords" content="India tourism, travel India, Indian destinations, Taj Mahal, Goa beaches, Rajasthan heritage, Explore Our India">
+  <meta name="author" content="Prakash Tiwari">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourusername.github.io/explore-india/">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Explore Our India">
+  <meta property="og:description" content="Discover the beauty of India – From Himalayas to beaches, heritage, culture, and more.">
+  <meta property="og:image" content="https://source.unsplash.com/800x400/?india,travel">
+  <meta property="og:url" content="https://yourusername.github.io/explore-india/">
+
   <link rel="stylesheet" href="style.css">
   <style>
     /* Navbar Styling */
@@ -77,6 +92,49 @@
       padding: 0 10px 15px;
     }
 
+    /* About Developer Section */
+    .about-dev {
+      background: #f0f4ff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .about-dev h2 {
+      color: #1a237e;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .dev-card {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .dev-card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #1a237e;
+    }
+    .dev-card div {
+      max-width: 500px;
+      text-align: left;
+    }
+    .dev-card a {
+      color: #1a237e;
+      text-decoration: none;
+    }
+    .dev-card a:hover {
+      text-decoration: underline;
+    }
+
     /* Footer */
     footer {
       background: #222;
@@ -110,19 +168,33 @@
 
   <section class="features">
     <div class="card">
-      <img src="https://source.unsplash.com/800x500/?tajmahal,india" alt="Taj Mahal">
+      <img src="https://source.unsplash.com/800x500/?tajmahal,india" alt="Taj Mahal, Agra">
       <h3>Agra</h3>
       <p>The city of the magnificent Taj Mahal.</p>
     </div>
     <div class="card">
-      <img src="https://source.unsplash.com/800x500/?goa,beach" alt="Goa">
+      <img src="https://source.unsplash.com/800x500/?goa,beach" alt="Goa Beaches">
       <h3>Goa</h3>
       <p>Enjoy the sun, sand, and sea in India’s favorite beach destination.</p>
     </div>
     <div class="card">
-      <img src="https://source.unsplash.com/800x500/?rajasthan,fort" alt="Rajasthan">
+      <img src="https://source.unsplash.com/800x500/?rajasthan,fort" alt="Rajasthan Forts">
       <h3>Rajasthan</h3>
       <p>Experience royal heritage, culture, and desert adventures.</p>
+    </div>
+  </section>
+
+  <!-- About Developer Section -->
+  <section class="about-dev">
+    <h2>About the Developer</h2>
+    <div class="dev-card">
+      <img src="https://source.unsplash.com/200x200/?developer,computer" alt="Developer Photo">
+      <div>
+        <h3>Prakash Tiwari</h3>
+        <p>👋 Hi! I'm Prakash Tiwari, a Computer Science student passionate about Web Development and Artificial Intelligence. I created this website to showcase India's beauty and culture.</p>
+        <p>📧 Email: <a href="mailto:prakash@example.com">prakash@example.com</a></p>
+        <p>💼 GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+      </div>
     </div>
   </section>
 

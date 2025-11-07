@@ -3,13 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Contact - Explore Our India</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Contact Prakash Tiwari for Explore Our India – reach out for inquiries, suggestions, or collaborations related to India tourism.">
+  <meta name="keywords" content="Contact Prakash Tiwari, Explore Our India, India tourism contact, inquiries, travel suggestions">
+  <meta name="author" content="Prakash Tiwari">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourusername.github.io/explore-india/contact.html">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Contact - Explore Our India">
+  <meta property="og:description" content="Reach out to Prakash Tiwari for inquiries, suggestions, or collaborations on Explore Our India website.">
+  <meta property="og:image" content="https://source.unsplash.com/800x400/?contact,email">
+  <meta property="og:url" content="https://yourusername.github.io/explore-india/contact.html">
+
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      background: #ff9966;
+      padding: 20px;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 10px 0 0 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #222;
+    }
+
+    .contact-section {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f0f4ff;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-section input, 
+    .contact-section textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .contact-section button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1a237e;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-section button:hover {
+      background: #444;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
 
   <header>
-    <h1>Explore Our India</h1>
+    <h1>🌏 Explore Our India</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -20,18 +121,20 @@
     </nav>
   </header>
 
-  <section class="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message"></textarea>
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <p style="text-align:center;">Have questions or suggestions? Reach out to us!</p>
+    <form action="mailto:prakash@example.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <p style="text-align:center; margin-top:15px;">📧 Email: <a href="mailto:prakash@example.com">prakash@example.com</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Explore Our India</p>
+    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
   </footer>
 
 </body>

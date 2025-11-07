@@ -3,12 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Login - Explore Our India</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Login to Explore Our India to access personalized travel guides, destinations, and hotel recommendations.">
+  <meta name="keywords" content="Login Explore Our India, India travel, tourism, user account, hotel booking, travel guide">
+  <meta name="author" content="Prakash Tiwari">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourusername.github.io/explore-india/login.html">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Login - Explore Our India">
+  <meta property="og:description" content="Sign in to Explore Our India for personalized travel recommendations and guides.">
+  <meta property="og:image" content="https://source.unsplash.com/800x400/?login,travel">
+  <meta property="og:url" content="https://yourusername.github.io/explore-india/login.html">
+
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #ff9966;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1a237e;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      color: #1a237e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Login to Explore Our India</h1>
+    <h1>🌏 Login to Explore Our India</h1>
   </header>
 
   <main>
@@ -20,13 +118,16 @@
     <p>Don't have an account? <a href="register.html">Register here</a></p>
   </main>
 
+  <footer>
+    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
+  </footer>
+
   <!-- Firebase Libraries -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
-    // 🔥 Firebase Configuration (Same as your register page)
     const firebaseConfig = {
       apiKey: "AIzaSyA2_pMk1wu_uEGWONmSbvVCmGp6ixUVr8Y",
       authDomain: "exploreourindia.firebaseapp.com",
@@ -37,11 +138,9 @@
       measurementId: "G-0QFH7C9G17"
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // 🔐 Handle login form
     document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("loginEmail").value.trim();
@@ -50,7 +149,7 @@
       try {
         await auth.signInWithEmailAndPassword(email, password);
         alert("✅ Login successful! Welcome back to Explore Our India");
-        window.location.href = "index.html"; // Redirect after login
+        window.location.href = "index.html";
       } catch (error) {
         alert("⚠️ " + error.message);
       }

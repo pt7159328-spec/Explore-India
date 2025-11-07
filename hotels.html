@@ -3,14 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotels - Explore Our India</title>
+
+  <title>Hotels & Resorts - Explore Our India</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Discover India’s top luxury hotels and resorts – Umaid Bhawan, Taj Exotica, Kumarakom Lake Resort, The Leela Palace, and more.">
+  <meta name="keywords" content="India hotels, luxury hotels India, resorts in India, Umaid Bhawan, Taj Exotica Goa, Kumarakom Lake Resort, The Leela Palace, Explore Our India">
+  <meta name="author" content="Prakash Tiwari">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourusername.github.io/explore-india/hotels.html">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Hotels & Resorts - Explore Our India">
+  <meta property="og:description" content="Stay at India’s most beautiful and comfortable hotels and resorts across popular destinations.">
+  <meta property="og:image" content="https://source.unsplash.com/800x400/?hotel,india">
+  <meta property="og:url" content="https://yourusername.github.io/explore-india/hotels.html">
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <style>
+    /* Page title */
+    .page-title {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(to right, #ff9966, #ff5e62);
+      color: white;
+    }
+
+    /* Gallery / Hotel Cards */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+    .gallery div {
+      background: #f4f4f4;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .gallery p {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #ff9966;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
 
   <header>
-    <h1>Explore Our India</h1>
+    <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -29,25 +86,25 @@
 
   <section class="gallery">
     <div>
-      <img src="https://source.unsplash.com/800x500/?hotel,jaipur" alt="Jaipur Hotel">
+      <img src="https://source.unsplash.com/800x500/?hotel,jaipur" alt="Umaid Bhawan Palace, Jodhpur">
       <p>Umaid Bhawan Palace, Jodhpur</p>
     </div>
     <div>
-      <img src="https://source.unsplash.com/800x500/?hotel,goa" alt="Goa Resort">
+      <img src="https://source.unsplash.com/800x500/?hotel,goa" alt="Taj Exotica Resort, Goa">
       <p>Taj Exotica Resort, Goa</p>
     </div>
     <div>
-      <img src="https://source.unsplash.com/800x500/?hotel,kerala" alt="Kerala">
+      <img src="https://source.unsplash.com/800x500/?hotel,kerala" alt="Kumarakom Lake Resort, Kerala">
       <p>Kumarakom Lake Resort, Kerala</p>
     </div>
     <div>
-      <img src="https://source.unsplash.com/800x500/?hotel,delhi" alt="Delhi">
+      <img src="https://source.unsplash.com/800x500/?hotel,delhi" alt="The Leela Palace, New Delhi">
       <p>The Leela Palace, New Delhi</p>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Explore Our India</p>
+    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
   </footer>
 
 </body>
