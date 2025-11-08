@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
    <url>
       <loc>https://yourusername.github.io/explore-india/</loc>
-      <priority>1.00</priority>
+      <priority>1.0</priority>
    </url>
+
    <url>
       <loc>https://yourusername.github.io/explore-india/destinations.html</loc>
-      <priority>0.80</priority>
+      <priority>0.8</priority>
    </url>
+
    <url>
       <loc>https://yourusername.github.io/explore-india/about.html</loc>
-      <priority>0.80</priority>
+      <priority>0.8</priority>
    </url>
+
    <url>
       <loc>https://yourusername.github.io/explore-india/contact.html</loc>
-      <priority>0.80</priority>
+      <priority>0.8</priority>
    </url>
+
    <url>
-      <loc>https://yourusername.github.io/explore-india/hotels.html</loc>
-      <priority>0.80</priority>
-   </url>
-   <url>
-      <loc>https://yourusername.github.io/explore-india/register.html</loc>
-      <priority>0.60</priority>
-   </url>
-   <url>
-      <loc>https://yourusername.github.io/explore-india/login.html</loc>
-      <priority>0.60</priority>
-   </url>
-</urlset>
+     
