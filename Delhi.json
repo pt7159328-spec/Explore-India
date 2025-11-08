@@ -1,0 +1,15 @@
+{
+  "Delhi": [
+    { "name": "Central Delhi", "description": "Administrative and historic hub of Delhi." },
+    { "name": "East Delhi", "description": "Residential and commercial areas with Ghazipur and Mayur Vihar." },
+    { "name": "New Delhi", "description": "Capital area with Parliament, Rashtrapati Bhavan, and embassies." },
+    { "name": "North Delhi", "description": "Residential and educational district with markets." },
+    { "name": "North East Delhi", "description": "Densely populated district with residential areas." },
+    { "name": "North West Delhi", "description": "Residential and industrial areas." },
+    { "name": "Shahdara", "description": "Commercial and residential district in East Delhi." },
+    { "name": "South Delhi", "description": "Upscale residential areas and historic monuments." },
+    { "name": "South East Delhi", "description": "Industrial and residential areas with connectivity to Noida." },
+    { "name": "South West Delhi", "description": "Residential district with urban and rural mix." },
+    { "name": "West Delhi", "description": "Residential and commercial district with markets." }
+  ]
+}

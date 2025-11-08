@@ -1,0 +1,20 @@
+{
+  "Manipur": [
+    { "name": "Bishnupur", "description": "Known for classical Manipuri dance and historic sites." },
+    { "name": "Chandel", "description": "Famous for scenic hills and tribal culture." },
+    { "name": "Churachandpur", "description": "Tribal district with lush landscapes." },
+    { "name": "Imphal East", "description": "Contains parts of the capital city Imphal." },
+    { "name": "Imphal West", "description": "Contains the other part of the capital city Imphal." },
+    { "name": "Jiribam", "description": "Smallest district, known for connectivity to Assam." },
+    { "name": "Kakching", "description": "Agricultural district famous for sugarcane farming." },
+    { "name": "Kamjong", "description": "Hilly district with tribal villages." },
+    { "name": "Kangpokpi", "description": "Known for scenic hills and rural culture." },
+    { "name": "Noney", "description": "Newly created district with beautiful valleys." },
+    { "name": "Pherzawl", "description": "Remote district with hilly terrain." },
+    { "name": "Senapati", "description": "Known for cultural heritage and tribal population." },
+    { "name": "Tamenglong", "description": "Hilly district with forested landscapes." },
+    { "name": "Tengnoupal", "description": "Scenic district with tribal villages." },
+    { "name": "Thoubal", "description": "Agricultural district near Imphal city." },
+    { "name": "Ukhrul", "description": "Famous for natural beauty and Tangkhul tribe." }
+  ]
+}

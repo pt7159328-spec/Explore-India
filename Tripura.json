@@ -1,0 +1,12 @@
+{
+  "Tripura": [
+    { "name": "Dhalai", "description": "Hilly district with tribal population and forests." },
+    { "name": "Gomati", "description": "Known for agriculture and heritage sites." },
+    { "name": "Khowai", "description": "Agricultural district near central Tripura." },
+    { "name": "North Tripura", "description": "Hilly district with tribal villages." },
+    { "name": "Sepahijala", "description": "Famous for wildlife sanctuary and temples." },
+    { "name": "South Tripura", "description": "Known for cultural sites and agriculture." },
+    { "name": "Unakoti", "description": "Famous for ancient rock carvings and temples." },
+    { "name": "West Tripura", "description": "Contains capital city Agartala and urban centers." }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "Jammu and Kashmir": [
+    { "name": "Anantnag", "description": "Famous for beautiful valleys and saffron cultivation." },
+    { "name": "Bandipora", "description": "Known for Wular Lake and scenic beauty." },
+    { "name": "Baramulla", "description": "Historic district with rivers and mountains." },
+    { "name": "Budgam", "description": "Famous for Chrar-i-Sharif shrine and crafts." },
+    { "name": "Doda", "description": "Hilly district in Jammu region with scenic beauty." },
+    { "name": "Ganderbal", "description": "Famous for lakes and tourist spots." },
+    { "name": "Jammu", "description": "Winter capital of the UT and major city." },
+    { "name": "Kathua", "description": "Known for agriculture and cultural heritage." },
+    { "name": "Kishtwar", "description": "Mountainous district, famous for saffron and rivers." },
+    { "name": "Kulgam", "description": "Hilly district with forests and apple orchards." },
+    { "name": "Kupwara", "description": "Border district with forests and rivers." },
+    { "name": "Poonch", "description": "Mountainous district near border, rich in culture." },
+    { "name": "Pulwama", "description": "Famous for agriculture and saffron fields." },
+    { "name": "Rajouri", "description": "Hilly district with historical forts." },
+    { "name": "Ramban", "description": "Known for rivers and scenic hills." },
+    { "name": "Reasi", "description": "Hilly district with temples and hydro projects." },
+    { "name": "Samba", "description": "Small district near Jammu, agricultural hub." },
+    { "name": "Shopian", "description": "Famous for apple orchards and scenic valleys." },
+    { "name": "Srinagar", "description": "Summer capital, famous for Dal Lake and gardens." },
+    { "name": "Udhampur", "description": "Known for army establishments and hilly terrain." }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "Punjab": [
+    { "name": "Amritsar", "description": "Famous for Golden Temple and Wagah Border." },
+    { "name": "Barnala", "description": "Known for agriculture and textile industries." },
+    { "name": "Bathinda", "description": "Industrial and agricultural hub." },
+    { "name": "Faridkot", "description": "Historic district with cultural heritage." },
+    { "name": "Fatehgarh Sahib", "description": "Known for Sikh religious sites." },
+    { "name": "Fazilka", "description": "Border district, agricultural economy." },
+    { "name": "Gurdaspur", "description": "Historic district, rivers and culture." },
+    { "name": "Hoshiarpur", "description": "Known for temples, scenic hills, and culture." },
+    { "name": "Jalandhar", "description": "Industrial hub, sports goods capital." },
+    { "name": "Kapurthala", "description": "Historic princely state, cultural heritage." },
+    { "name": "Ludhiana", "description": "Largest industrial city, known for textiles." },
+    { "name": "Mansa", "description": "Agricultural district, known for cotton." },
+    { "name": "Moga", "description": "Known for agriculture and cultural heritage." },
+    { "name": "Pathankot", "description": "Gateway to Himachal, historic forts." },
+    { "name": "Patiala", "description": "Historic city, famous for royal palaces." },
+    { "name": "Rupnagar", "description": "Historic district, archaeological significance." },
+    { "name": "Sangrur", "description": "Agriculture and textile hub." },
+    { "name": "SAS Nagar (Mohali)", "description": "IT hub and modern city." },
+    { "name": "Tarn Taran", "description": "Known for Sikh religious sites and history." },
+    { "name": "Firozpur", "description": "Border district, agriculture-based economy." },
+    { "name": "Muktsar", "description": "Historic district, Sikh heritage." },
+    { "name": "Nawanshahr", "description": "Known for agriculture and cultural sites." }
+  ]
+}

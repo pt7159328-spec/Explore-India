@@ -1,0 +1,10 @@
+{
+  "Sikkim": [
+    { "name": "East Sikkim", "description": "Contains the capital Gangtok, urban and tourist hub." },
+    { "name": "West Sikkim", "description": "Known for scenic valleys and monasteries." },
+    { "name": "North Sikkim", "description": "Remote mountainous region with Goecha La trek." },
+    { "name": "South Sikkim", "description": "Famous for agriculture and rural villages." },
+    { "name": "Namchi", "description": "Tourist spot with cultural and religious sites." },
+    { "name": "Pakyong", "description": "Newly created district near Gangtok." }
+  ]
+}

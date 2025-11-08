@@ -1,0 +1,17 @@
+{
+  "Uttarakhand": [
+    { "name": "Almora", "description": "Known for scenic hills and cultural heritage." },
+    { "name": "Bageshwar", "description": "Hilly district with temples and natural beauty." },
+    { "name": "Chamoli", "description": "Famous for religious sites and Garhwal Himalayas." },
+    { "name": "Champawat", "description": "Known for history and scenic landscapes." },
+    { "name": "Dehradun", "description": "Capital city, educational and commercial hub." },
+    { "name": "Haridwar", "description": "Famous for Ganga river and pilgrimage sites." },
+    { "name": "Nainital", "description": "Popular hill station with lakes and tourism." },
+    { "name": "Pauri Garhwal", "description": "Hilly district with temples and forests." },
+    { "name": "Pithoragarh", "description": "Known as the 'Little Kashmir' of Uttarakhand." },
+    { "name": "Rudraprayag", "description": "Famous for rivers and religious sites." },
+    { "name": "Tehri Garhwal", "description": "Known for Tehri Dam and scenic landscapes." },
+    { "name": "Udham Singh Nagar", "description": "Plains district, industrial and agricultural hub." },
+    { "name": "Uttarkashi", "description": "Mountainous district with pilgrimage and trekking spots." }
+  ]
+}

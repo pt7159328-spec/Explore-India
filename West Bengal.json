@@ -1,0 +1,27 @@
+{
+  "West Bengal": [
+    { "name": "Alipurduar", "description": "Known for forests, wildlife sanctuaries, and tea gardens." },
+    { "name": "Bankura", "description": "Famous for terracotta temples and crafts." },
+    { "name": "Birbhum", "description": "Cultural district, home to Santiniketan." },
+    { "name": "Cooch Behar", "description": "Historic princely state with palaces and parks." },
+    { "name": "Dakshin Dinajpur", "description": "Known for agriculture and rural culture." },
+    { "name": "Darjeeling", "description": "Hill district famous for tea, tiger hill, and toy train." },
+    { "name": "Hooghly", "description": "Rich in history and industrial development." },
+    { "name": "Howrah", "description": "Industrial hub, known for Howrah Bridge." },
+    { "name": "Jalpaiguri", "description": "Gateway to North Bengal, known for forests and rivers." },
+    { "name": "Jhargram", "description": "Tribal district known for culture and forests." },
+    { "name": "Kalimpong", "description": "Hill district famous for tourism and handicrafts." },
+    { "name": "Kolkata", "description": "Capital city, cultural, commercial and educational hub." },
+    { "name": "Malda", "description": "Known for mangoes, historical sites, and river banks." },
+    { "name": "Murshidabad", "description": "Historic city, rich in Nawabi heritage." },
+    { "name": "Nadia", "description": "Famous for religious sites and educational institutions." },
+    { "name": "North 24 Parganas", "description": "Largest district, part of Kolkata metropolitan region." },
+    { "name": "Paschim Bardhaman", "description": "Industrial district with coal mines and steel industries." },
+    { "name": "Paschim Medinipur", "description": "Known for agriculture and forested areas." },
+    { "name": "Purba Bardhaman", "description": "Agricultural hub known for rice and oil seeds." },
+    { "name": "Purba Medinipur", "description": "Coastal district known for ports and beaches." },
+    { "name": "Purulia", "description": "Known for tribal culture, Chhau dance, and hills." },
+    { "name": "South 24 Parganas", "description": "Famous for Sundarbans and mangrove forests." },
+    { "name": "Uttar Dinajpur", "description": "Agricultural district with rich river plains." }
+  ]
+}

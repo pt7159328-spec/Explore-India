@@ -1,0 +1,15 @@
+{
+  "Mizoram": [
+    { "name": "Aizawl", "description": "Capital city and administrative district." },
+    { "name": "Champhai", "description": "Famous for border trade and scenic valleys." },
+    { "name": "Kolasib", "description": "Known for agriculture and rural culture." },
+    { "name": "Lawngtlai", "description": "Hilly district with tribal villages." },
+    { "name": "Lunglei", "description": "Second largest town, scenic landscapes." },
+    { "name": "Mamit", "description": "Known for forests and tribal culture." },
+    { "name": "Saiha", "description": "Southernmost district, remote and hilly." },
+    { "name": "Serchhip", "description": "Small district, near Aizawl." },
+    { "name": "Siaha", "description": "Famous for natural beauty and tribal culture." },
+    { "name": "Hnahthial", "description": "Newly created district with scenic hills." },
+    { "name": "Khawzawl", "description": "Hilly district with rural settlements." }
+  ]
+}
