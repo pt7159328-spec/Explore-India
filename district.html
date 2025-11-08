@@ -23,8 +23,19 @@
   <!-- Districts Section -->
   <section class="districts">
     <h1>Districts</h1>
-    <p>Select a state from the list below to explore its districts.</p>
+    <p>Select a state from the dropdown below to explore its districts.</p>
 
+    <!-- State Selection -->
+    <select id="stateSelect">
+      <option value="">Select State</option>
+    </select>
+
+    <!-- Districts Dropdown -->
+    <select id="districtSelect">
+      <option value="">Select District</option>
+    </select>
+
+    <!-- District Cards -->
     <div id="districtContainer" class="districts-grid"></div>
   </section>
 
@@ -34,34 +45,6 @@
   </footer>
 
   <!-- Script -->
-  <script>
-    // Get state name from query parameter or default
-    const urlParams = new URLSearchParams(window.location.search);
-    const stateName = urlParams.get('state') || "Uttar Pradesh"; // default state
-
-    // Load the JSON data for the state
-    fetch(`states_data/${stateName}.json`)
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById('districtContainer');
-        const districts = data[stateName];
-        districts.forEach(district => {
-          const districtCard = document.createElement('div');
-          districtCard.className = 'district-card';
-          districtCard.innerHTML = `
-            <h3>${district.name}</h3>
-            <p>${district.description}</p>
-          `;
-          container.appendChild(districtCard);
-        });
-      })
-      .catch(err => console.error('Error loading districts:', err));
-
-    // Highlight current nav link
-    const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll("nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPage);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
