@@ -54,50 +54,60 @@
 </footer>
 
 <script>
+// -----------------------------
+// ✅ State Page — Dynamic District Loader & Search
+// -----------------------------
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const stateName = params.get('state') || "Unknown State";
-  document.getElementById('stateName').innerText = stateName;
+  const stateTitle = document.getElementById('stateName');
+  const districtsGrid = document.getElementById('districtsGrid');
+  const districtSearch = document.getElementById('districtSearch');
+
+  stateTitle.innerText = stateName;
 
   try {
     const response = await fetch("data/states.json");
     const data = await response.json();
 
-    // Find the selected state
+    // Find selected state
     const selectedState = data.states.find(s => s.name === stateName);
-    const grid = document.getElementById('districtsGrid');
 
     if (!selectedState) {
-      grid.innerHTML = `<p style="text-align:center;">No district data available for <b>${stateName}</b>.</p>`;
+      districtsGrid.innerHTML = `<p style="text-align:center;">No district data available for <b>${stateName}</b>.</p>`;
       return;
     }
 
-    // Display districts dynamically
-    selectedState.districts.forEach(d => {
-      const card = document.createElement('div');
-      card.classList.add('district-card');
-      card.innerHTML = `
-        <img src="${d.image || 'https://source.unsplash.com/300x200/?${d.name},${stateName}'}" alt="${d.name}">
-        <h3>${d.name}</h3>
-        <p>${d.description}</p>
-      `;
-      grid.appendChild(card);
-    });
+    // Display all districts
+    function displayDistricts(districts) {
+      districtsGrid.innerHTML = "";
+      districts.forEach((d, i) => {
+        const card = document.createElement('div');
+        card.classList.add('district-card');
+        card.innerHTML = `
+          <img src="${d.image || `https://source.unsplash.com/300x200/?${d.name},${stateName}`}" alt="${d.name}">
+          <h3>${d.name}</h3>
+          <p>${d.description}</p>
+        `;
+        districtsGrid.appendChild(card);
 
-    // District search
-    const districtSearch = document.getElementById('districtSearch');
+        // Animate cards
+        setTimeout(() => card.classList.add("show"), i * 100);
+      });
+    }
+
+    displayDistricts(selectedState.districts);
+
+    // Search functionality
     districtSearch.addEventListener('input', () => {
       const query = districtSearch.value.toLowerCase();
-      document.querySelectorAll(".district-card").forEach(card => {
-        const name = card.querySelector("h3").innerText.toLowerCase();
-        card.style.display = name.includes(query) ? "block" : "none";
-      });
+      const filtered = selectedState.districts.filter(d => d.name.toLowerCase().includes(query));
+      displayDistricts(filtered);
     });
 
   } catch (err) {
     console.error("Error loading JSON:", err);
-    document.getElementById('districtsGrid').innerHTML =
-      '<p style="text-align:center;">Error loading district data. Please try again later.</p>';
+    districtsGrid.innerHTML = '<p style="text-align:center;">Error loading district data. Please try again later.</p>';
   }
 });
 </script>
@@ -118,9 +128,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
-  transition: transform 0.3s ease, opacity 0.6s ease;
+  transition: transform 0.3s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(30px);
+}
+.district-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .district-card:hover {
   transform: scale(1.03);
@@ -150,27 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-
-/* Animation */
-.district-card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.5s ease;
-}
-.district-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
 </style>
-
-<script>
-// Animate district cards on load
-window.addEventListener("load", () => {
-  document.querySelectorAll(".district-card").forEach((el, i) => {
-    setTimeout(() => el.classList.add("show"), i * 100);
-  });
-});
-</script>
 
 </body>
 </html>
