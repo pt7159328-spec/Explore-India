@@ -1,0 +1,30 @@
+{
+  "Andhra Pradesh": [
+    { "name": "Anantapur", "description": "Known for agriculture and historic temples." },
+    { "name": "Chittoor", "description": "Famous for Tirupati temple and scenic hills." },
+    { "name": "East Godavari", "description": "Famous for Godavari river and fertile lands." },
+    { "name": "Guntur", "description": "Agricultural hub, known for chilies and historic sites." },
+    { "name": "Krishna", "description": "Fertile district with Vijayawada city." },
+    { "name": "Kurnool", "description": "Historic district with forts and temples." },
+    { "name": "Nellore", "description": "Coastal district with agriculture and fishing." },
+    { "name": "Prakasam", "description": "Known for agriculture and mineral resources." },
+    { "name": "Srikakulam", "description": "Coastal district with cultural heritage." },
+    { "name": "Visakhapatnam", "description": "Industrial and port city with scenic beauty." },
+    { "name": "Vizianagaram", "description": "Historic district with temples and hills." },
+    { "name": "West Godavari", "description": "Fertile district with agriculture and rivers." },
+    { "name": "YSR Kadapa", "description": "Historic district, temples and mineral resources." },
+    { "name": "Alluri Sitharama Raju", "description": "Forested and tribal district." },
+    { "name": "Nandyal", "description": "Industrial and agricultural district." },
+    { "name": "Bapatla", "description": "Agricultural district with cultural sites." },
+    { "name": "Parvathipuram Manyam", "description": "Hilly district with tribal population." },
+    { "name": "NTR", "description": "Urban district named after N. T. Rama Rao." },
+    { "name": "Kakinada", "description": "Coastal and port district." },
+    { "name": "Anakapalli", "description": "Urban and industrial district." },
+    { "name": "Tirupati", "description": "Famous pilgrimage city." },
+    { "name": "Sri Sathya Sai", "description": "Tribal and agricultural district." },
+    { "name": "Kovur", "description": "Small district, agricultural and cultural significance." },
+    { "name": "Eluru", "description": "Historic and agricultural district." },
+    { "name": "Prathipadu", "description": "Agricultural and scenic district." },
+    { "name": "Palnadu", "description": "Historic district, agriculture-based." }
+  ]
+}
