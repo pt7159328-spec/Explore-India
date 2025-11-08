@@ -22,4 +22,18 @@
    </url>
 
    <url>
-     
+      <loc>https://yourusername.github.io/explore-india/hotels.html</loc>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://yourusername.github.io/explore-india/register.html</loc>
+      <priority>0.6</priority>
+   </url>
+
+   <url>
+      <loc>https://yourusername.github.io/explore-india/login.html</loc>
+      <priority>0.6</priority>
+   </url>
+
+</urlset>
