@@ -1,0 +1,8 @@
+{
+  "Puducherry": [
+    { "name": "Karaikal", "description": "Coastal district known for temples and French heritage." },
+    { "name": "Mahe", "description": "Small coastal district, part of former French India." },
+    { "name": "Puducherry", "description": "Capital district with French colonial architecture and beaches." },
+    { "name": "Yanam", "description": "Small district on the eastern coast, part of former French India." }
+  ]
+}

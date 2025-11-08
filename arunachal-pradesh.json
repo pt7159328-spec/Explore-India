@@ -1,0 +1,32 @@
+{
+  "Arunachal Pradesh": [
+    { "name": "Tawang", "description": "Famous for Tawang Monastery and scenic beauty." },
+    { "name": "West Kameng", "description": "Known for Sela Pass and adventure tourism." },
+    { "name": "East Kameng", "description": "Rich in biodiversity and tribal culture." },
+    { "name": "Papum Pare", "description": "District with capital city Itanagar." },
+    { "name": "Kurung Kumey", "description": "Hilly region with tribal heritage." },
+    { "name": "Kra Daadi", "description": "Scenic landscapes and remote villages." },
+    { "name": "Lower Subansiri", "description": "Famous for natural beauty and rivers." },
+    { "name": "Upper Subansiri", "description": "Known for forests and hydropower projects." },
+    { "name": "West Siang", "description": "Home to Adi tribes and scenic valleys." },
+    { "name": "East Siang", "description": "Known for Pasighat, the oldest town in Arunachal." },
+    { "name": "Upper Siang", "description": "Gateway to Siang River and remote villages." },
+    { "name": "Lower Siang", "description": "Newly created district with tribal culture." },
+    { "name": "Lower Dibang Valley", "description": "Known for forests and indigenous communities." },
+    { "name": "Dibang Valley", "description": "Remote district with rich flora and fauna." },
+    { "name": "Anjaw", "description": "Easternmost district of India." },
+    { "name": "Lohit", "description": "Home to diverse tribes and Brahmaputra tributaries." },
+    { "name": "Namsai", "description": "Known for festivals and scenic beauty." },
+    { "name": "Changlang", "description": "Rich in culture and biodiversity." },
+    { "name": "Tirap", "description": "Hilly district bordering Nagaland and Myanmar." },
+    { "name": "Longding", "description": "Southernmost district with tribal villages." },
+    { "name": "Itanagar", "description": "Capital region in Papum Pare district." },
+    { "name": "Hayuliang", "description": "Remote eastern region with scenic landscapes." },
+    { "name": "Rima", "description": "Border area near Tibet with natural beauty." },
+    { "name": "Mechuka", "description": "Tourist spot known for Mechuka valley and monasteries." },
+    { "name": "Ziro", "description": "Famous for Apatani tribal culture and Ziro Festival." },
+    { "name": "Basar", "description": "Known for Galo tribal heritage." },
+    { "name": "Daporijo", "description": "Town in Upper Subansiri with tribal culture." },
+    { "name": "Seppa", "description": "District headquarters of East Kameng." }
+  ]
+}

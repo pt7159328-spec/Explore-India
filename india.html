@@ -3,27 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Our India | All States & Districts</title>
+<title>Explore Our India | All States & UTs</title>
 
-<!-- SEO Meta Tags -->
-<meta name="description" content="Explore Our India – Complete guide to all Indian states, districts, and famous tourist places.">
-<meta name="keywords" content="India states, districts, Indian tourism, Explore Our India, travel India, places to visit">
+<meta name="description" content="Explore Our India – Complete guide to all Indian states, union territories, and districts.">
+<meta name="keywords" content="India states, union territories, Indian tourism, Explore Our India, travel India, places to visit">
 <meta name="author" content="Prakash Tiwari">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Explore Our India">
-<meta property="og:description" content="Discover all Indian states, districts, and famous tourist destinations.">
-<meta property="og:image" content="https://source.unsplash.com/800x400/?india,map">
-<meta property="og:url" content="https://yourusername.github.io/explore-india/india.html">
 
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
-</head>
-<body>
 
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #333;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.page-title {
+  text-align: center;
+  margin: 30px 0;
+}
+#search-box {
+  display: block;
+  margin: 0 auto 20px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+}
+.states-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+.state-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s;
+}
+.state-card:hover {
+  transform: scale(1.05);
+}
+.state-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.state-card h3 {
+  margin: 10px 0;
+  color: #0078d7;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  background: #ff9966;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #ff6600;
+}
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: white;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
 <header>
-  <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
+  <h1>🌏 Explore Our India</h1>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -37,28 +118,52 @@
 </header>
 
 <section class="page-title">
-  <h2>All States of India</h2>
+  <h2>All States & Union Territories of India</h2>
   <p>Click a state to explore its districts and famous places</p>
+  <input type="text" id="search-box" placeholder="Search state or UT...">
 </section>
 
-<section class="states-grid">
-  <!-- Example State Card -->
-  <div class="state-card">
-    <img src="https://source.unsplash.com/300x200/?rajasthan,india" alt="Rajasthan">
-    <h3>Rajasthan</h3>
-    <a href="state.html?state=Rajasthan" class="btn">Explore Districts</a>
-  </div>
-  <div class="state-card">
-    <img src="https://source.unsplash.com/300x200/?kerala,india" alt="Kerala">
-    <h3>Kerala</h3>
-    <a href="state.html?state=Kerala" class="btn">Explore Districts</a>
-  </div>
-  <!-- Add more states in similar cards -->
-</section>
+<section class="states-grid" id="statesGrid"></section>
 
 <footer>
   <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
 </footer>
+
+<script>
+const states = [
+  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
+  "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
+  "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+  "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi", "Jammu and Kashmir", "Ladakh", "Lakshadweep", "Puducherry"
+];
+
+// Load states dynamically
+const grid = document.getElementById('statesGrid');
+function loadStates(list){
+  grid.innerHTML = "";
+  list.forEach(st => {
+    const div = document.createElement('div');
+    div.classList.add('state-card');
+    div.innerHTML = `
+      <img src="https://source.unsplash.com/300x200/?${st},india" alt="${st}">
+      <h3>${st}</h3>
+      <a href="state.html?state=${encodeURIComponent(st)}" class="btn">Explore Districts</a>
+    `;
+    grid.appendChild(div);
+  });
+}
+loadStates(states);
+
+// Search function
+document.getElementById('search-box').addEventListener('input', e => {
+  const search = e.target.value.toLowerCase();
+  const filtered = states.filter(s => s.toLowerCase().includes(search));
+  loadStates(filtered);
+});
+</script>
 
 </body>
 </html>

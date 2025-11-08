@@ -1,0 +1,16 @@
+{
+  "Meghalaya": [
+    { "name": "East Garo Hills", "description": "Known for Mangsang and tribal culture." },
+    { "name": "East Jaintia Hills", "description": "Famous for natural limestone caves." },
+    { "name": "East Khasi Hills", "description": "Contains Shillong, the capital city." },
+    { "name": "North Garo Hills", "description": "Hilly district with forests and waterfalls." },
+    { "name": "Ri Bhoi", "description": "Known for agriculture and scenic beauty." },
+    { "name": "South Garo Hills", "description": "Tribal district with rivers and forests." },
+    { "name": "South West Garo Hills", "description": "Famous for eco-tourism and hills." },
+    { "name": "South West Khasi Hills", "description": "Hilly district with rural culture." },
+    { "name": "West Garo Hills", "description": "Known for Tura town and scenic valleys." },
+    { "name": "West Jaintia Hills", "description": "Famous for coal mines and caves." },
+    { "name": "West Khasi Hills", "description": "Hilly district with agriculture and forests." },
+    { "name": "North Khasi Hills", "description": "Known for scenic beauty and rural culture." }
+  ]
+}

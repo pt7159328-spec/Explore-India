@@ -1,0 +1,21 @@
+{
+  "Nagaland": [
+    { "name": "Dimapur", "description": "Commercial hub and largest city in Nagaland." },
+    { "name": "Kohima", "description": "Capital city with historical sites." },
+    { "name": "Mokokchung", "description": "Cultural and educational center of Ao tribe." },
+    { "name": "Mon", "description": "Famous for Konyak tribe and hills." },
+    { "name": "Tuensang", "description": "Hilly district with tribal villages." },
+    { "name": "Wokha", "description": "Home of Lotha tribe with scenic landscapes." },
+    { "name": "Zunheboto", "description": "Known for Sumi Naga tribe and agriculture." },
+    { "name": "Phek", "description": "Home of Chakhesang tribe and scenic hills." },
+    { "name": "Kiphire", "description": "Remote district near Myanmar border." },
+    { "name": "Peren", "description": "Tribal district with agriculture and forests." },
+    { "name": "Longleng", "description": "Hilly and remote tribal district." },
+    { "name": "Noklak", "description": "Newly created district, border area." },
+    { "name": "Tseminyu", "description": "Small district, mainly rural." },
+    { "name": "Sangtam", "description": "Hilly district with tribal culture." },
+    { "name": "Aboi", "description": "Agricultural and forested area." },
+    { "name": "Chümoukedima", "description": "Urban district near Dimapur." },
+    { "name": "Naga West", "description": "Remote hilly area with tribal population." }
+  ]
+}

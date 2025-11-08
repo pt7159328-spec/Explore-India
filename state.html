@@ -27,7 +27,7 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="india.html">India</a></li>
+      <li><a href="index.html">India</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="register.html">Register</a></li>
@@ -54,63 +54,51 @@
 </footer>
 
 <script>
-// Sample JS to dynamically load districts for a state
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const stateName = params.get('state') || "Unknown State";
+  document.getElementById('stateName').innerText = stateName;
 
-// Example data structure (you can expand later)
-const statesData = {
-  "Rajasthan": [
-    {
-      name: "Jaipur",
-      image: "https://source.unsplash.com/300x200/?jaipur,fort",
-      description: "The Pink City famous for palaces, forts, and culture."
-    },
-    {
-      name: "Udaipur",
-      image: "https://source.unsplash.com/300x200/?udaipur,lake",
-      description: "The city of lakes, beautiful palaces, and heritage."
+  try {
+    const response = await fetch("data/states.json");
+    const data = await response.json();
+
+    // Find the selected state
+    const selectedState = data.states.find(s => s.name === stateName);
+    const grid = document.getElementById('districtsGrid');
+
+    if (!selectedState) {
+      grid.innerHTML = `<p style="text-align:center;">No district data available for <b>${stateName}</b>.</p>`;
+      return;
     }
-    // Add more districts here
-  ],
-  "Kerala": [
-    {
-      name: "Kochi",
-      image: "https://source.unsplash.com/300x200/?kochi,backwaters",
-      description: "Famous for backwaters, culture, and historical sites."
-    }
-    // Add more districts
-  ]
-};
 
-// Get state from URL
-const params = new URLSearchParams(window.location.search);
-const state = params.get('state') || "Unknown State";
-document.getElementById('stateName').innerText = state;
+    // Display districts dynamically
+    selectedState.districts.forEach(d => {
+      const card = document.createElement('div');
+      card.classList.add('district-card');
+      card.innerHTML = `
+        <img src="${d.image || 'https://source.unsplash.com/300x200/?${d.name},${stateName}'}" alt="${d.name}">
+        <h3>${d.name}</h3>
+        <p>${d.description}</p>
+      `;
+      grid.appendChild(card);
+    });
 
-// Load districts
-const districtsGrid = document.getElementById('districtsGrid');
-if(statesData[state]){
-  statesData[state].forEach(d => {
-    const card = document.createElement('div');
-    card.classList.add('district-card');
-    card.innerHTML = `
-      <img src="${d.image}" alt="${d.name}">
-      <h3>${d.name}</h3>
-      <p>${d.description}</p>
-    `;
-    districtsGrid.appendChild(card);
-  });
-} else {
-  districtsGrid.innerHTML = "<p>No district data available for this state yet.</p>";
-}
+    // District search
+    const districtSearch = document.getElementById('districtSearch');
+    districtSearch.addEventListener('input', () => {
+      const query = districtSearch.value.toLowerCase();
+      document.querySelectorAll(".district-card").forEach(card => {
+        const name = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = name.includes(query) ? "block" : "none";
+      });
+    });
 
-// Search functionality
-document.getElementById('districtSearch').addEventListener('input', function() {
-  const searchTerm = this.value.toLowerCase();
-  const cards = document.querySelectorAll('.district-card');
-  cards.forEach(card => {
-    const name = card.querySelector('h3').innerText.toLowerCase();
-    card.style.display = name.includes(searchTerm) ? 'block' : 'none';
-  });
+  } catch (err) {
+    console.error("Error loading JSON:", err);
+    document.getElementById('districtsGrid').innerHTML =
+      '<p style="text-align:center;">Error loading district data. Please try again later.</p>';
+  }
 });
 </script>
 
@@ -130,7 +118,9 @@ document.getElementById('districtSearch').addEventListener('input', function() {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .district-card:hover {
   transform: scale(1.03);
@@ -160,7 +150,27 @@ document.getElementById('districtSearch').addEventListener('input', function() {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+/* Animation */
+.district-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+.district-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
+
+<script>
+// Animate district cards on load
+window.addEventListener("load", () => {
+  document.querySelectorAll(".district-card").forEach((el, i) => {
+    setTimeout(() => el.classList.add("show"), i * 100);
+  });
+});
+</script>
 
 </body>
 </html>

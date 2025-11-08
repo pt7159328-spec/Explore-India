@@ -10,170 +10,52 @@
   <meta name="keywords" content="India tourism, travel India, Indian destinations, Taj Mahal, Goa beaches, Rajasthan heritage, Explore Our India">
   <meta name="author" content="Prakash Tiwari">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourusername.github.io/explore-india/">
-
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="FB4IxFfSWS3fxpWZCCvYM4AZM53lod1JXoCXij4We48" />
-
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Explore Our India">
-  <meta property="og:description" content="Discover the beauty of India – From Himalayas to beaches, heritage, culture, and more.">
-  <meta property="og:image" content="https://source.unsplash.com/800x400/?india,travel">
-  <meta property="og:url" content="https://yourusername.github.io/explore-india/">
-  <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 
   <style>
-    /* Navbar Styling */
-    nav {
-      background-color: #222;
-      padding: 12px 20px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav ul li a.active,
-    nav ul li a:hover {
-      color: #ff9966;
-      text-decoration: underline;
-    }
+    nav { background-color: #222; padding: 12px 20px; }
+    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav ul li a { text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+    nav ul li a.active, nav ul li a:hover { color: #ff9966; text-decoration: underline; }
 
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(to right, #ff9966, #ff5e62);
-      color: white;
-    }
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-    }
-    .hero .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .hero .btn:hover {
-      background: #444;
-    }
+    .hero { text-align: center; padding: 100px 20px; background: linear-gradient(to right, #ff9966, #ff5e62); color: white; }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; }
+    .hero .btn { display: inline-block; padding: 12px 25px; margin-top: 20px; background: #222; color: white; text-decoration: none; border-radius: 8px; transition: 0.3s; }
+    .hero .btn:hover { background: #444; }
 
-    /* Features Section */
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 50px 20px;
-    }
-    .features .card {
-      width: 300px;
-      background: #f4f4f4;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .features .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .features .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .features .card h3 {
-      margin: 15px 0 10px;
-      color: #1e88e5;
-    }
-    .features .card p {
-      padding: 0 10px 15px;
-      color: #555;
-    }
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 50px 20px; }
+    .features .card { width: 300px; background: #f4f4f4; border-radius: 12px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.2); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .features .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+    .features .card img { width: 100%; height: 200px; object-fit: cover; }
+    .features .card h3 { margin: 15px 0 10px; color: #1e88e5; }
+    .features .card p { padding: 0 10px 15px; color: #555; }
 
-    /* About Developer Section */
-    .about-dev {
-      background: #f0f4ff;
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .about-dev h2 {
-      color: #1a237e;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    .dev-card {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    .dev-card img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #1a237e;
-    }
-    .dev-card div {
-      max-width: 500px;
-      text-align: left;
-    }
-    .dev-card a {
-      color: #1a237e;
-      text-decoration: none;
-    }
-    .dev-card a:hover {
-      text-decoration: underline;
-    }
+    .about-dev { background: #f0f4ff; padding: 50px 20px; text-align: center; }
+    .about-dev h2 { color: #1a237e; font-size: 2rem; margin-bottom: 20px; }
+    .dev-card { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; max-width: 900px; margin: auto; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+    .dev-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #1a237e; }
+    .dev-card div { max-width: 500px; text-align: left; }
+    .dev-card a { color: #1a237e; text-decoration: none; }
+    .dev-card a:hover { text-decoration: underline; }
 
-    /* Footer */
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+    footer { background: #222; color: white; text-align: center; padding: 20px; }
 
     @media (max-width:768px){
-      .features .card {
-        width: 100%;
-        max-width: 350px;
-      }
-      .hero h2 {
-        font-size: 2rem;
-      }
+      .features .card { width: 100%; max-width: 350px; }
+      .hero h2 { font-size: 2rem; }
     }
+
+    /* New Search Section Styles */
+    #location-search { padding: 50px 20px; background: #fff4e6; text-align: center; margin: 40px 0; border-radius: 15px; }
+    #location-search h2 { color: #ff5722; font-size: 2rem; margin-bottom: 20px; }
+    #search-box { width: 100%; max-width: 400px; padding: 10px 15px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 20px; }
+    #location-list { list-style: none; padding: 0; margin: 0 auto; max-width: 400px; text-align: left; }
+    #location-list li { padding: 10px; border-bottom: 1px solid #ddd; }
+    #location-list li a { text-decoration: none; color: #1e88e5; }
+    #location-list li a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -214,6 +96,13 @@
       <h3>Rajasthan</h3>
       <p>Experience royal heritage, culture, and desert adventures.</p>
     </div>
+  </section>
+
+  <!-- Search Section -->
+  <section id="location-search">
+    <h2>Find Locations in India</h2>
+    <input type="text" id="search-box" placeholder="Search India, State, or District">
+    <ul id="location-list"></ul>
   </section>
 
   <!-- About Developer Section -->
