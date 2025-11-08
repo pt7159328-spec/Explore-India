@@ -1,169 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Our India | All States & UTs</title>
-
-<meta name="description" content="Explore Our India – Complete guide to all Indian states, union territories, and districts.">
-<meta name="keywords" content="India states, union territories, Indian tourism, Explore Our India, travel India, places to visit">
-<meta name="author" content="Prakash Tiwari">
-
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
-header {
-  background: #333;
-  color: #fff;
-  padding: 15px 0;
-  text-align: center;
-}
-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-.page-title {
-  text-align: center;
-  margin: 30px 0;
-}
-#search-box {
-  display: block;
-  margin: 0 auto 20px;
-  width: 300px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-}
-.states-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-.state-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 250px;
-  transition: transform 0.3s;
-}
-.state-card:hover {
-  transform: scale(1.05);
-}
-.state-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-.state-card h3 {
-  margin: 10px 0;
-  color: #0078d7;
-}
-.btn {
-  display: inline-block;
-  margin-bottom: 15px;
-  background: #ff9966;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-.btn:hover {
-  background: #ff6600;
-}
-footer {
-  text-align: center;
-  padding: 10px;
-  background: #333;
-  color: white;
-  margin-top: 40px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Our India | States</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<header>
-  <h1>🌏 Explore Our India</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="india.html" class="active">India</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="register.html">Register</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- Header / Navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section class="page-title">
-  <h2>All States & Union Territories of India</h2>
-  <p>Click a state to explore its districts and famous places</p>
-  <input type="text" id="search-box" placeholder="Search state or UT...">
-</section>
+  <!-- India States Section -->
+  <section class="india-states">
+    <h1>Explore Indian States</h1>
+    <p>Click on any state to see its districts and explore tourism info.</p>
 
-<section class="states-grid" id="statesGrid"></section>
+    <div id="statesContainer" class="states-grid"></div>
+  </section>
 
-<footer>
-  <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
+  </footer>
 
-<script>
-const states = [
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
-  "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
-  "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
-  "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu",
-  "Delhi", "Jammu and Kashmir", "Ladakh", "Lakshadweep", "Puducherry"
-];
+  <!-- Script -->
+  <script>
+    // Load states from states.json
+    fetch('states.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('statesContainer');
+        data.states.forEach(state => {
+          const stateCard = document.createElement('div');
+          stateCard.className = 'state-card';
+          stateCard.innerHTML = `
+            <h3>${state}</h3>
+            <a href="district.html?state=${encodeURIComponent(state)}" class="explore-btn">Explore Districts</a>
+          `;
+          container.appendChild(stateCard);
+        });
+      })
+      .catch(err => console.error('Error loading states:', err));
 
-// Load states dynamically
-const grid = document.getElementById('statesGrid');
-function loadStates(list){
-  grid.innerHTML = "";
-  list.forEach(st => {
-    const div = document.createElement('div');
-    div.classList.add('state-card');
-    div.innerHTML = `
-      <img src="https://source.unsplash.com/300x200/?${st},india" alt="${st}">
-      <h3>${st}</h3>
-      <a href="state.html?state=${encodeURIComponent(st)}" class="btn">Explore Districts</a>
-    `;
-    grid.appendChild(div);
-  });
-}
-loadStates(states);
-
-// Search function
-document.getElementById('search-box').addEventListener('input', e => {
-  const search = e.target.value.toLowerCase();
-  const filtered = states.filter(s => s.toLowerCase().includes(search));
-  loadStates(filtered);
-});
-</script>
-
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
+    });
+  </script>
 </body>
 </html>

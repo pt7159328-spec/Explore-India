@@ -1,7 +1,7 @@
 {
   "Andaman and Nicobar Islands": [
-    { "name": "Nicobar", "description": "Southern group of islands, known for tribal culture." },
-    { "name": "North and Middle Andaman", "description": "Northern islands, famous for scenic beaches and forests." },
-    { "name": "South Andaman", "description": "Contains capital city Port Blair and tourism hubs." }
+    { "name": "Nicobar", "description": "Southern group of islands, tribal culture, remote and scenic." },
+    { "name": "North and Middle Andaman", "description": "Known for beaches, forested areas, and wildlife." },
+    { "name": "South Andaman", "description": "Contains capital Port Blair, tourism and administrative hub." }
   ]
 }

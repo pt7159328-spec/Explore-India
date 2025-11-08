@@ -1,5 +1,8 @@
 {
   "Chandigarh": [
-    { "name": "Chandigarh", "description": "Union Territory and capital city of both Punjab and Haryana." }
+    {
+      "name": "Chandigarh",
+      "description": "Union Territory and capital of both Punjab and Haryana, known for modern architecture and planned city layout."
+    }
   ]
 }

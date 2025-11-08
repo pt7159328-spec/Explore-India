@@ -3,167 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Contact - Explore Our India</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Contact Prakash Tiwari for Explore Our India – reach out for inquiries, suggestions, or collaborations related to India tourism.">
-  <meta name="keywords" content="Contact Prakash Tiwari, Explore Our India, India tourism contact, inquiries, travel suggestions">
-  <meta name="author" content="Prakash Tiwari">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourusername.github.io/explore-india/contact.html">
-
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Contact - Explore Our India">
-  <meta property="og:description" content="Reach out to Prakash Tiwari for inquiries, suggestions, or collaborations on Explore Our India website.">
-  <meta property="og:image" content="https://source.unsplash.com/800x400/?contact,email">
-  <meta property="og:url" content="https://yourusername.github.io/explore-india/contact.html">
-
+  <title>Explore Our India | Contact</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-    }
-
-    header {
-      text-align: center;
-      background: linear-gradient(to right, #ff9966, #ff5e62);
-      padding: 20px;
-      color: white;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 0;
-      margin: 10px 0 0 0;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover, nav ul li a.active {
-      color: #222;
-    }
-
-    .contact-section {
-      max-width: 650px;
-      margin: 50px auto;
-      padding: 30px 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
-    }
-
-    .contact-section h2 {
-      text-align: center;
-      color: #1a237e;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-
-    .contact-section p {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .contact-section form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .contact-section input, 
-    .contact-section textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      width: 100%;
-      transition: 0.3s;
-    }
-
-    .contact-section input:focus, 
-    .contact-section textarea:focus {
-      border-color: #ff9966;
-      outline: none;
-    }
-
-    .contact-section button {
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #1a237e;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .contact-section button:hover {
-      background: #444;
-    }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .contact-section {
-        margin: 30px 20px;
-      }
-    }
-  </style>
 </head>
 <body>
-
+  <!-- Header / Navigation -->
   <header>
-    <h1>🌏 Explore Our India</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Have questions, suggestions, or want to collaborate? Reach out to us!</p>
-    <form action="mailto:prakash@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+  <!-- Contact Section -->
+  <section class="contact">
+    <h1>Contact Us</h1>
+    <p>Have questions or feedback? Reach out to us!</p>
+
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
     </form>
-    <p style="text-align:center; margin-top:15px;">📧 Email: <a href="mailto:prakash@example.com">prakash@example.com</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
+  <!-- Script -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you for contacting us, " + document.getElementById("name").value + "!");
+      this.reset();
+    });
+
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
+    });
+  </script>
 </body>
 </html>

@@ -1,18 +1,18 @@
 {
   "Kerala": [
-    { "name": "Thiruvananthapuram", "description": "Capital city known for Kovalam beach and Padmanabhaswamy Temple." },
-    { "name": "Kollam", "description": "Known for Ashtamudi Lake and cashew industry." },
-    { "name": "Pathanamthitta", "description": "Famous for Sabarimala Temple and forests." },
-    { "name": "Alappuzha", "description": "Called 'Venice of the East' for its backwaters." },
-    { "name": "Kottayam", "description": "Known for rubber plantations and literature." },
-    { "name": "Idukki", "description": "Hill district famous for Munnar and dams." },
-    { "name": "Ernakulam", "description": "Home to Kochi, the Queen of the Arabian Sea." },
-    { "name": "Thrissur", "description": "Cultural capital of Kerala, known for Thrissur Pooram festival." },
-    { "name": "Palakkad", "description": "Gateway to Kerala, known for Palakkad Fort." },
-    { "name": "Malappuram", "description": "Known for rich culture and football enthusiasm." },
-    { "name": "Kozhikode", "description": "Historic port city known for beaches and food." },
-    { "name": "Wayanad", "description": "Hill district known for wildlife and waterfalls." },
-    { "name": "Kannur", "description": "Famous for Theyyam ritual and handlooms." },
-    { "name": "Kasaragod", "description": "Northernmost district known for Bekal Fort and beaches." }
+    { "name": "Alappuzha", "description": "Known for backwaters, houseboats, and coir industry." },
+    { "name": "Ernakulam", "description": "Contains Kochi city, commercial hub with port and IT industry." },
+    { "name": "Idukki", "description": "Hilly district famous for dams, spice plantations, and wildlife." },
+    { "name": "Kannur", "description": "Known for handloom, Theyyam festivals, and beaches." },
+    { "name": "Kasaragod", "description": "Northernmost district, famous for forts and coir industry." },
+    { "name": "Kollam", "description": "Coastal district with cashew industry and backwaters." },
+    { "name": "Kottayam", "description": "Known for rubber plantations and literacy." },
+    { "name": "Kozhikode", "description": "Historic city, famous for Malabar cuisine and beaches." },
+    { "name": "Malappuram", "description": "Cultural district with historic mosques and hills." },
+    { "name": "Palakkad", "description": "Gateway to Kerala, known for agriculture and temples." },
+    { "name": "Pathanamthitta", "description": "Known for Sabarimala pilgrimage and riverine beauty." },
+    { "name": "Thiruvananthapuram", "description": "Capital city, administrative and cultural center." },
+    { "name": "Thrissur", "description": "Cultural capital of Kerala, famous for festivals and temples." },
+    { "name": "Wayanad", "description": "Hilly district with wildlife sanctuaries and spice plantations." }
   ]
 }

@@ -1,20 +1,20 @@
 {
   "Manipur": [
-    { "name": "Bishnupur", "description": "Known for classical Manipuri dance and historic sites." },
-    { "name": "Chandel", "description": "Famous for scenic hills and tribal culture." },
-    { "name": "Churachandpur", "description": "Tribal district with lush landscapes." },
-    { "name": "Imphal East", "description": "Contains parts of the capital city Imphal." },
-    { "name": "Imphal West", "description": "Contains the other part of the capital city Imphal." },
-    { "name": "Jiribam", "description": "Smallest district, known for connectivity to Assam." },
-    { "name": "Kakching", "description": "Agricultural district famous for sugarcane farming." },
-    { "name": "Kamjong", "description": "Hilly district with tribal villages." },
-    { "name": "Kangpokpi", "description": "Known for scenic hills and rural culture." },
-    { "name": "Noney", "description": "Newly created district with beautiful valleys." },
-    { "name": "Pherzawl", "description": "Remote district with hilly terrain." },
-    { "name": "Senapati", "description": "Known for cultural heritage and tribal population." },
-    { "name": "Tamenglong", "description": "Hilly district with forested landscapes." },
-    { "name": "Tengnoupal", "description": "Scenic district with tribal villages." },
-    { "name": "Thoubal", "description": "Agricultural district near Imphal city." },
-    { "name": "Ukhrul", "description": "Famous for natural beauty and Tangkhul tribe." }
+    { "name": "Bishnupur", "description": "Known for ancient temples and Loktak Lake." },
+    { "name": "Chandel", "description": "Hilly district with tribal villages and scenic landscapes." },
+    { "name": "Churachandpur", "description": "Famous for tribal culture and natural beauty." },
+    { "name": "Imphal East", "description": "Contains parts of Imphal city, administrative district." },
+    { "name": "Imphal West", "description": "Capital district, urban and cultural hub." },
+    { "name": "Jiribam", "description": "Small border district near Assam." },
+    { "name": "Kakching", "description": "Known for agriculture and local markets." },
+    { "name": "Kamjong", "description": "Remote hilly district, scenic and tribal culture." },
+    { "name": "Kangpokpi", "description": "Newly created district with diverse tribal population." },
+    { "name": "Noney", "description": "Hilly and forested district, rich in biodiversity." },
+    { "name": "Pherzawl", "description": "New district with tribal settlements and hills." },
+    { "name": "Senapati", "description": "Tribal district with scenic hills and rivers." },
+    { "name": "Tamenglong", "description": "Known for bamboo and tribal culture." },
+    { "name": "Tengnoupal", "description": "Hilly and remote district, less populated." },
+    { "name": "Thoubal", "description": "Contains urban and agricultural areas, near Imphal." },
+    { "name": "Ukhrul", "description": "Famous for Tangkhul Naga tribe and scenic landscapes." }
   ]
 }

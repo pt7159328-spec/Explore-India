@@ -3,125 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Our India | Discover Top Destinations & Culture</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Explore Our India – Discover top tourist destinations, cultural experiences, beaches, forts, and heritage across India.">
-  <meta name="keywords" content="India tourism, travel India, Indian destinations, Taj Mahal, Goa beaches, Rajasthan heritage, Explore Our India">
-  <meta name="author" content="Prakash Tiwari">
-  <meta name="robots" content="index, follow">
-
+  <title>Explore Our India | Home</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-
-  <style>
-    nav { background-color: #222; padding: 12px 20px; }
-    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
-    nav ul li a { text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
-    nav ul li a.active, nav ul li a:hover { color: #ff9966; text-decoration: underline; }
-
-    .hero { text-align: center; padding: 100px 20px; background: linear-gradient(to right, #ff9966, #ff5e62); color: white; }
-    .hero h2 { font-size: 2.8rem; margin-bottom: 15px; }
-    .hero p { font-size: 1.2rem; }
-    .hero .btn { display: inline-block; padding: 12px 25px; margin-top: 20px; background: #222; color: white; text-decoration: none; border-radius: 8px; transition: 0.3s; }
-    .hero .btn:hover { background: #444; }
-
-    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 50px 20px; }
-    .features .card { width: 300px; background: #f4f4f4; border-radius: 12px; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.2); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .features .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-    .features .card img { width: 100%; height: 200px; object-fit: cover; }
-    .features .card h3 { margin: 15px 0 10px; color: #1e88e5; }
-    .features .card p { padding: 0 10px 15px; color: #555; }
-
-    .about-dev { background: #f0f4ff; padding: 50px 20px; text-align: center; }
-    .about-dev h2 { color: #1a237e; font-size: 2rem; margin-bottom: 20px; }
-    .dev-card { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; max-width: 900px; margin: auto; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
-    .dev-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #1a237e; }
-    .dev-card div { max-width: 500px; text-align: left; }
-    .dev-card a { color: #1a237e; text-decoration: none; }
-    .dev-card a:hover { text-decoration: underline; }
-
-    footer { background: #222; color: white; text-align: center; padding: 20px; }
-
-    @media (max-width:768px){
-      .features .card { width: 100%; max-width: 350px; }
-      .hero h2 { font-size: 2rem; }
-    }
-
-    /* New Search Section Styles */
-    #location-search { padding: 50px 20px; background: #fff4e6; text-align: center; margin: 40px 0; border-radius: 15px; }
-    #location-search h2 { color: #ff5722; font-size: 2rem; margin-bottom: 20px; }
-    #search-box { width: 100%; max-width: 400px; padding: 10px 15px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 20px; }
-    #location-list { list-style: none; padding: 0; margin: 0 auto; max-width: 400px; text-align: left; }
-    #location-list li { padding: 10px; border-bottom: 1px solid #ddd; }
-    #location-list li a { text-decoration: none; color: #1e88e5; }
-    #location-list li a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
-
+  <!-- Header / Navigation -->
   <header>
-    <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h2>Discover the Beauty of India</h2>
-    <p>From the Himalayas to Kanyakumari — Explore, Experience, Enjoy!</p>
-    <a href="destinations.html" class="btn">Start Exploring</a>
+    <h1>Welcome to Explore Our India</h1>
+    <p>Discover the beauty, culture, and heritage of India.</p>
+    <a href="destinations.html" class="btn">Explore Destinations</a>
   </section>
 
-  <section class="features">
-    <div class="card">
-      <img src="https://source.unsplash.com/800x500/?tajmahal,india" alt="Taj Mahal, Agra">
-      <h3>Agra</h3>
-      <p>The city of the magnificent Taj Mahal.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/800x500/?goa,beach" alt="Goa Beaches">
-      <h3>Goa</h3>
-      <p>Enjoy the sun, sand, and sea in India’s favorite beach destination.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/800x500/?rajasthan,fort" alt="Rajasthan Forts">
-      <h3>Rajasthan</h3>
-      <p>Experience royal heritage, culture, and desert adventures.</p>
+  <!-- Featured States Section -->
+  <section class="featured-states">
+    <h2>Popular States to Explore</h2>
+    <div class="states-grid" id="statesGrid">
+      <!-- States will be dynamically loaded here -->
     </div>
   </section>
 
-  <!-- Search Section -->
-  <section id="location-search">
-    <h2>Find Locations in India</h2>
-    <input type="text" id="search-box" placeholder="Search India, State, or District">
-    <ul id="location-list"></ul>
-  </section>
-
-  <!-- About Developer Section -->
-  <section class="about-dev">
-    <h2>About the Developer</h2>
-    <div class="dev-card">
-      <img src="https://source.unsplash.com/200x200/?developer,computer" alt="Developer Photo">
-      <div>
-        <h3>Prakash Tiwari</h3>
-        <p>👋 Hi! I'm Prakash Tiwari, a Computer Science student passionate about Web Development and Artificial Intelligence. I created this website to showcase India's beauty and culture.</p>
-        <p>📧 Email: <a href="mailto:prakash@example.com">prakash@example.com</a></p>
-        <p>💼 GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-      </div>
-    </div>
-  </section>
-
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="states.js"></script>
+  <script>
+    // Load states dynamically from states.js
+    const statesGrid = document.getElementById("statesGrid");
+    if (window.states) {
+      states.states.forEach(state => {
+        const div = document.createElement("div");
+        div.className = "state-card";
+        div.innerHTML = `<h3>${state}</h3>
+                         <a href="state.html?state=${encodeURIComponent(state)}" class="btn">Explore</a>`;
+        statesGrid.appendChild(div);
+      });
+    }
+
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
+    });
+  </script>
 </body>
 </html>

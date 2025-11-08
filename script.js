@@ -1,5 +1,5 @@
 // -----------------------------
-// Highlight the current active link
+// Navigation: Highlight current page
 // -----------------------------
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 document.querySelectorAll("nav a").forEach(link => {
@@ -7,108 +7,86 @@ document.querySelectorAll("nav a").forEach(link => {
 });
 
 // -----------------------------
-// Smooth fade-in animation
-// -----------------------------
-window.addEventListener("load", () => {
-  document.querySelectorAll(".card, .gallery div, .dev-card, .contact-section form, .district-card").forEach((el, i) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    setTimeout(() => {
-      el.style.transition = "all 0.6s ease-out";
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, i * 150);
-  });
-});
-
-// -----------------------------
-// Smooth scroll for internal links
-// -----------------------------
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", e => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute("href"));
-    if(target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
-
-// -----------------------------
-// Explore Our India: Index + State functionality
+// Smooth fade-in animation for page load
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // ----- INDEX.HTML -----
-  const searchBox = document.getElementById("search-box");
-  const locationList = document.getElementById("location-list");
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    document.body.style.transition = "opacity 1s";
+    document.body.style.opacity = 1;
+  }, 100);
+});
 
-  if(searchBox && locationList){
-    const states = [
-      "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat",
-      "Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh",
-      "Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan",
-      "Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal",
-      "Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry","Chandigarh","Daman and Diu",
-      "Dadra and Nagar Haveli","Delhi"
-    ];
+// -----------------------------
+// Dynamic States and Districts
+// -----------------------------
+const stateSelect = document.getElementById("stateSelect");
+const districtSelect = document.getElementById("districtSelect");
 
-    const renderStates = (list) => {
-      locationList.innerHTML = "";
-      list.forEach(state => {
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="state.html?state=${encodeURIComponent(state)}">${state}</a>`;
-        locationList.appendChild(li);
-      });
-      if(list.length === 0) locationList.innerHTML = "<li>No results found</li>";
-    };
-
-    renderStates(states);
-
-    searchBox.addEventListener("input", () => {
-      const query = searchBox.value.toLowerCase();
-      const filtered = states.filter(state => state.toLowerCase().includes(query));
-      renderStates(filtered);
+// Fetch states from states.json
+fetch("states.json")
+  .then(response => response.json())
+  .then(data => {
+    data.states.forEach(state => {
+      const option = document.createElement("option");
+      option.value = state;
+      option.textContent = state;
+      stateSelect.appendChild(option);
     });
-  }
+  })
+  .catch(err => console.error("Error loading states:", err));
 
-  // ----- STATE.HTML -----
-  const stateNameElement = document.getElementById("stateName");
-  const districtsGrid = document.getElementById("districtsGrid");
-  const districtSearch = document.getElementById("districtSearch");
+// Load districts when a state is selected
+stateSelect.addEventListener("change", function() {
+  const selectedState = this.value;
+  if (!selectedState) return;
 
-  if(stateNameElement && districtsGrid && districtSearch){
-    const params = new URLSearchParams(window.location.search);
-    const stateName = params.get("state");
-    if(!stateName) return;
+  fetch(`${selectedState}.json`)
+    .then(response => response.json())
+    .then(data => {
+      const districts = data[selectedState];
+      districtSelect.innerHTML = "<option value=''>Select District</option>";
+      districts.forEach(d => {
+        const option = document.createElement("option");
+        option.value = d.name;
+        option.textContent = d.name;
+        districtSelect.appendChild(option);
+      });
+    })
+    .catch(err => console.error("Error loading districts:", err));
+});
 
-    stateNameElement.textContent = stateName;
+// -----------------------------
+// Simple Search Functionality
+// -----------------------------
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
-    // Fetch the specific state JSON
-    fetch(`data/${stateName}.json`)
+if(searchInput){
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    searchResults.innerHTML = "";
+
+    if(query.length < 2) return; // Minimum 2 characters to search
+
+    fetch("states.json")
       .then(res => res.json())
       .then(data => {
-        districtsGrid.innerHTML = "";
-        data.districts.forEach(d => {
-          const card = document.createElement("div");
-          card.className = "district-card";
-          card.innerHTML = `
-            <img src="${d.image || `https://source.unsplash.com/300x200/?${d.name},${stateName}`}" alt="${d.name}">
-            <h3>${d.name}</h3>
-            <p>${d.description}</p>
-          `;
-          districtsGrid.appendChild(card);
+        data.states.forEach(state => {
+          fetch(`${state}.json`)
+            .then(res => res.json())
+            .then(stateData => {
+              const districts = stateData[state];
+              districts.forEach(d => {
+                if(d.name.toLowerCase().includes(query)){
+                  const div = document.createElement("div");
+                  div.className = "search-item";
+                  div.textContent = `${d.name} (${state})`;
+                  searchResults.appendChild(div);
+                }
+              });
+            });
         });
-
-        // District search
-        districtSearch.addEventListener("input", () => {
-          const q = districtSearch.value.toLowerCase();
-          document.querySelectorAll(".district-card").forEach(card => {
-            const name = card.querySelector("h3").innerText.toLowerCase();
-            card.style.display = name.includes(q) ? "block" : "none";
-          });
-        });
-      })
-      .catch(err => {
-        districtsGrid.innerHTML = "<p style='text-align:center;'>Data not available for this state.</p>";
-        console.error(err);
       });
-  }
-});
+  });
+}

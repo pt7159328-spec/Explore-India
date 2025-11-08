@@ -1,6 +1,11 @@
 {
   "Ladakh": [
-    { "name": "Kargil", "description": "Hilly district, known for scenic valleys and monasteries." },
-    { "name": "Leh", "description": "Largest district, famous for mountains, monasteries, and trekking." }
+    { "name": "Leh", "description": "Capital district, known for monasteries, trekking, and scenic landscapes." },
+    { "name": "Kargil", "description": "Famous for historic sites, rivers, and mountainous terrain." },
+    { "name": "Drass", "description": "Known as the gateway to Kargil, extremely cold region." },
+    { "name": "Nubra", "description": "Valley famous for sand dunes, Bactrian camels, and scenic beauty." },
+    { "name": "Zanskar", "description": "Remote hilly region with monasteries and trekking routes." },
+    { "name": "Pangong", "description": "Known for Pangong Lake and breathtaking landscapes." },
+    { "name": "Tso Moriri", "description": "High-altitude lake region, rich in wildlife and natural beauty." }
   ]
 }

@@ -1,182 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore District - Explore Our India</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="Discover famous places, attractions, and travel info for the selected district in India.">
-<meta name="keywords" content="district tourism, Indian district, famous places, travel guide, Explore Our India">
-<meta name="author" content="Prakash Tiwari">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Explore District - Explore Our India">
-<meta property="og:description" content="Explore all famous places and attractions in the selected district.">
-<meta property="og:image" content="https://source.unsplash.com/800x400/?india,district">
-<meta property="og:url" content="https://yourusername.github.io/explore-india/district.html">
-
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Our India | Districts</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-  <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="india.html">India</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="register.html">Register</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section class="page-title">
-  <h2 id="districtName">District Name</h2>
-  <p>Explore famous places in this district</p>
-</section>
-
-<section class="place-search">
-  <input type="text" id="placeSearch" placeholder="Search famous places..." />
-</section>
-
-<section class="places-grid" id="placesGrid">
-  <!-- Place cards will be injected here via JavaScript -->
-</section>
-
-<footer>
-  <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
-</footer>
-
-<script>
-// Sample JS to dynamically load places for a district
-
-const districtsData = {
-  "Rajasthan": {
-    "Jaipur": [
-      {
-        name: "Amber Fort",
-        image: "https://source.unsplash.com/300x200/?amberfort,jaipur",
-        description: "A majestic fort with rich history and architecture.",
-        timings: "9:00 AM - 5:00 PM",
-        entryFee: "INR 100",
-        bestTime: "October - March"
-      },
-      {
-        name: "City Palace",
-        image: "https://source.unsplash.com/300x200/?citypalace,jaipur",
-        description: "Royal palace complex with museums and courtyards.",
-        timings: "9:30 AM - 5:00 PM",
-        entryFee: "INR 150",
-        bestTime: "October - March"
-      }
-      // Add more places
-    ]
-  }
-  // Add more states and districts
-};
-
-// Get state and district from URL
-const params = new URLSearchParams(window.location.search);
-const state = params.get('state') || "Unknown State";
-const district = params.get('district') || "Unknown District";
-document.getElementById('districtName').innerText = `${district}, ${state}`;
-
-// Load places
-const placesGrid = document.getElementById('placesGrid');
-if(districtsData[state] && districtsData[state][district]){
-  districtsData[state][district].forEach(p => {
-    const card = document.createElement('div');
-    card.classList.add('place-card');
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}">
-      <h3>${p.name}</h3>
-      <p>${p.description}</p>
+  <!-- Header / Navigation -->
+  <header>
+    <nav>
       <ul>
-        <li><strong>Timings:</strong> ${p.timings}</li>
-        <li><strong>Entry Fee:</strong> ${p.entryFee}</li>
-        <li><strong>Best Time to Visit:</strong> ${p.bestTime}</li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    `;
-    placesGrid.appendChild(card);
-  });
-} else {
-  placesGrid.innerHTML = "<p>No place data available for this district yet.</p>";
-}
+    </nav>
+  </header>
 
-// Search functionality
-document.getElementById('placeSearch').addEventListener('input', function() {
-  const searchTerm = this.value.toLowerCase();
-  const cards = document.querySelectorAll('.place-card');
-  cards.forEach(card => {
-    const name = card.querySelector('h3').innerText.toLowerCase();
-    card.style.display = name.includes(searchTerm) ? 'block' : 'none';
-  });
-});
-</script>
+  <!-- Districts Section -->
+  <section class="districts">
+    <h1>Districts</h1>
+    <p>Select a state from the list below to explore its districts.</p>
 
-<style>
-/* Places Grid Styling */
-.places-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 40px;
-  justify-content: center;
-}
-.place-card {
-  width: 320px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.place-card:hover {
-  transform: scale(1.03);
-}
-.place-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.place-card h3 {
-  margin: 10px 0;
-  color: #1e88e5;
-}
-.place-card p {
-  padding: 0 15px 10px;
-  color: #555;
-}
-.place-card ul {
-  list-style: none;
-  padding: 0 15px 15px;
-  text-align: left;
-}
-.place-card ul li {
-  margin-bottom: 5px;
-  font-size: 0.95rem;
-  color: #333;
-}
+    <div id="districtContainer" class="districts-grid"></div>
+  </section>
 
-/* Search Box */
-.place-search {
-  text-align: center;
-  margin: 20px 0;
-}
-#placeSearch {
-  width: 320px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-</style>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
+  </footer>
 
+  <!-- Script -->
+  <script>
+    // Get state name from query parameter or default
+    const urlParams = new URLSearchParams(window.location.search);
+    const stateName = urlParams.get('state') || "Uttar Pradesh"; // default state
+
+    // Load the JSON data for the state
+    fetch(`states_data/${stateName}.json`)
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('districtContainer');
+        const districts = data[stateName];
+        districts.forEach(district => {
+          const districtCard = document.createElement('div');
+          districtCard.className = 'district-card';
+          districtCard.innerHTML = `
+            <h3>${district.name}</h3>
+            <p>${district.description}</p>
+          `;
+          container.appendChild(districtCard);
+        });
+      })
+      .catch(err => console.error('Error loading districts:', err));
+
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
+    });
+  </script>
 </body>
 </html>

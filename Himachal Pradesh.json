@@ -1,16 +1,16 @@
 {
   "Himachal Pradesh": [
-    { "name": "Bilaspur", "description": "Known for Govind Sagar Lake and ancient temples." },
-    { "name": "Chamba", "description": "Famous for scenic valleys and Chamba town." },
-    { "name": "Hamirpur", "description": "Known for hill forts and education hubs." },
-    { "name": "Kangra", "description": "Famous for Kangra Valley, temples, and tea gardens." },
-    { "name": "Kinnaur", "description": "Mountainous region known for apples and scenic beauty." },
-    { "name": "Kullu", "description": "Famous for Kullu Valley, rivers, and adventure sports." },
-    { "name": "Lahaul and Spiti", "description": "High-altitude desert and Buddhist monasteries." },
-    { "name": "Mandi", "description": "Known for temples and historical architecture." },
-    { "name": "Shimla", "description": "Capital city, famous hill station with colonial architecture." },
-    { "name": "Sirmaur", "description": "Famous for natural beauty and orchards." },
-    { "name": "Solan", "description": "Known as the 'Mushroom City', industrial and scenic." },
-    { "name": "Una", "description": "Low hills and agricultural district." }
+    { "name": "Bilaspur", "description": "Known for scenic beauty and ancient temples." },
+    { "name": "Chamba", "description": "Famous for traditional handicrafts and temples." },
+    { "name": "Hamirpur", "description": "Industrial district with educational institutions." },
+    { "name": "Kangra", "description": "Home to Dharamshala and scenic valleys." },
+    { "name": "Kinnaur", "description": "Mountainous district with apple orchards and tribal culture." },
+    { "name": "Kullu", "description": "Famous for Manali, adventure sports, and temples." },
+    { "name": "Lahaul and Spiti", "description": "Remote cold desert, popular for trekking and monasteries." },
+    { "name": "Mandi", "description": "Known for rivers, temples, and scenic beauty." },
+    { "name": "Shimla", "description": "Capital city, famous hill station and colonial architecture." },
+    { "name": "Sirmaur", "description": "Hilly district known for agriculture and rivers." },
+    { "name": "Solan", "description": "Industrial district with breweries and temples." },
+    { "name": "Una", "description": "Plains district known for agriculture and cultural heritage." }
   ]
 }

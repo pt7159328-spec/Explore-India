@@ -3,140 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Destinations - Explore Our India</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Explore India’s top tourist destinations – Delhi, Kerala, Kashmir, Ladakh and more. Discover culture, heritage, and natural beauty.">
-  <meta name="keywords" content="India destinations, Delhi tourism, Kerala backwaters, Kashmir travel, Ladakh adventure, Explore Our India">
-  <meta name="author" content="Prakash Tiwari">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourusername.github.io/explore-india/destinations.html">
-
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Destinations - Explore Our India">
-  <meta property="og:description" content="Discover India’s most beautiful and iconic destinations – culture, heritage, nature, and adventure.">
-  <meta property="og:image" content="https://source.unsplash.com/800x400/?india,destination">
-  <meta property="og:url" content="https://yourusername.github.io/explore-india/destinations.html">
-
+  <title>Explore Our India | Destinations</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Navbar active link handled via JS */
-    nav ul li a.active {
-      text-decoration: underline;
-      color: #ff9966;
-    }
-
-    /* Page title */
-    .page-title {
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(to right, #ff9966, #ff5e62);
-      color: white;
-    }
-
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      text-align: center;
-    }
-    .gallery div {
-      background: #f4f4f4;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-    .gallery div img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .gallery div:hover img {
-      transform: scale(1.05);
-    }
-    .gallery p {
-      margin: 10px 0;
-      font-weight: bold;
-      color: #ff9966;
-    }
-
-    /* Footer */
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .gallery {
-        padding: 20px;
-      }
-    }
-  </style>
 </head>
 <body>
-
+  <!-- Header / Navigation -->
   <header>
-    <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="destinations.html" class="active">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="page-title">
-    <h2>Popular Indian Destinations</h2>
-    <p>Discover the beauty, culture, and heritage of India’s top locations.</p>
+  <!-- Destinations Section -->
+  <section class="destinations">
+    <h1>Explore Destinations of India</h1>
+    <p>Click on a state to see its districts and attractions.</p>
+
+    <div id="statesContainer" class="states-grid"></div>
   </section>
 
-  <section class="gallery">
-    <div>
-      <img src="https://source.unsplash.com/800x500/?delhi,india" alt="Delhi India">
-      <p>Delhi</p>
-    </div>
-    <div>
-      <img src="https://source.unsplash.com/800x500/?kerala,backwaters" alt="Kerala Backwaters">
-      <p>Kerala</p>
-    </div>
-    <div>
-      <img src="https://source.unsplash.com/800x500/?kashmir,india" alt="Kashmir India">
-      <p>Kashmir</p>
-    </div>
-    <div>
-      <img src="https://source.unsplash.com/800x500/?ladakh,india" alt="Ladakh India">
-      <p>Ladakh</p>
-    </div>
-  </section>
-
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
+  <!-- Script -->
   <script>
-    // Fade-in animation for gallery items
-    window.addEventListener("load", () => {
-      const galleryItems = document.querySelectorAll(".gallery div");
-      galleryItems.forEach((item, i) => {
-        setTimeout(() => {
-          item.style.opacity = "1";
-          item.style.transform = "translateY(0)";
-        }, i * 200);
-      });
+    // Fetch states.json and display them
+    fetch('states.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('statesContainer');
+        data.states.forEach(state => {
+          const stateCard = document.createElement('div');
+          stateCard.className = 'state-card';
+          stateCard.innerHTML = `
+            <h3>${state}</h3>
+            <a href="states/${state}.html" class="btn">View Districts</a>
+          `;
+          container.appendChild(stateCard);
+        });
+      })
+      .catch(err => console.error('Error loading states:', err));
+
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
     });
   </script>
-
 </body>
 </html>

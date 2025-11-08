@@ -1,170 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore State - Explore Our India</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="Explore districts and famous places of the selected Indian state.">
-<meta name="keywords" content="Indian state, districts, tourism, places to visit, Explore Our India">
-<meta name="author" content="Prakash Tiwari">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Explore State - Explore Our India">
-<meta property="og:description" content="Discover all districts and famous tourist destinations of the selected Indian state.">
-<meta property="og:image" content="https://source.unsplash.com/800x400/?india,map">
-<meta property="og:url" content="https://yourusername.github.io/explore-india/state.html">
-
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>States of India</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header / Navigation -->
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="district.html">Districts</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
 
-<header>
-  <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html">India</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="register.html">Register</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-  </nav>
-</header>
+  <main>
+    <h1>States of India</h1>
+    <div id="states-container">
+      <!-- States will be loaded here via JS -->
+    </div>
+  </main>
 
-<section class="page-title">
-  <h2 id="stateName">State Name</h2>
-  <p>Explore districts and famous places in this state</p>
-</section>
-
-<section class="district-search">
-  <input type="text" id="districtSearch" placeholder="Search districts..." />
-</section>
-
-<section class="districts-grid" id="districtsGrid">
-  <!-- District cards will be injected here via JavaScript -->
-</section>
-
-<footer>
-  <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
-</footer>
-
-<script>
-// -----------------------------
-// ✅ State Page — Dynamic District Loader & Search
-// -----------------------------
-document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const stateName = params.get('state') || "Unknown State";
-  const stateTitle = document.getElementById('stateName');
-  const districtsGrid = document.getElementById('districtsGrid');
-  const districtSearch = document.getElementById('districtSearch');
-
-  stateTitle.innerText = stateName;
-
-  try {
-    const response = await fetch("data/states.json");
-    const data = await response.json();
-
-    // Find selected state
-    const selectedState = data.states.find(s => s.name === stateName);
-
-    if (!selectedState) {
-      districtsGrid.innerHTML = `<p style="text-align:center;">No district data available for <b>${stateName}</b>.</p>`;
-      return;
-    }
-
-    // Display all districts
-    function displayDistricts(districts) {
-      districtsGrid.innerHTML = "";
-      districts.forEach((d, i) => {
-        const card = document.createElement('div');
-        card.classList.add('district-card');
-        card.innerHTML = `
-          <img src="${d.image || `https://source.unsplash.com/300x200/?${d.name},${stateName}`}" alt="${d.name}">
-          <h3>${d.name}</h3>
-          <p>${d.description}</p>
-        `;
-        districtsGrid.appendChild(card);
-
-        // Animate cards
-        setTimeout(() => card.classList.add("show"), i * 100);
-      });
-    }
-
-    displayDistricts(selectedState.districts);
-
-    // Search functionality
-    districtSearch.addEventListener('input', () => {
-      const query = districtSearch.value.toLowerCase();
-      const filtered = selectedState.districts.filter(d => d.name.toLowerCase().includes(query));
-      displayDistricts(filtered);
-    });
-
-  } catch (err) {
-    console.error("Error loading JSON:", err);
-    districtsGrid.innerHTML = '<p style="text-align:center;">Error loading district data. Please try again later.</p>';
-  }
-});
-</script>
-
-<style>
-/* Districts Grid Styling */
-.districts-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 40px;
-  justify-content: center;
-}
-.district-card {
-  width: 300px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease, opacity 0.5s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-.district-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.district-card:hover {
-  transform: scale(1.03);
-}
-.district-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.district-card h3 {
-  margin: 10px 0;
-  color: #1e88e5;
-}
-.district-card p {
-  padding: 10px 15px 20px;
-  color: #555;
-}
-
-/* Search Box */
-.district-search {
-  text-align: center;
-  margin: 20px 0;
-}
-#districtSearch {
-  width: 300px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-</style>
-
+  <script>
+    // Load states from states.json
+    fetch('states.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('states-container');
+        data.states.forEach(state => {
+          const stateDiv = document.createElement('div');
+          stateDiv.classList.add('state-item');
+          stateDiv.innerHTML = `
+            <a href="district.html?state=${encodeURIComponent(state)}">${state}</a>
+          `;
+          container.appendChild(stateDiv);
+        });
+      })
+      .catch(error => console.error('Error loading states:', error));
+  </script>
 </body>
 </html>

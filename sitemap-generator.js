@@ -1,39 +1,53 @@
-// sitemap-generator.js
-const fs = require("fs");
-const path = require("path");
+// -----------------------------
+// Dynamic Sitemap Generator
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const sitemapContainer = document.getElementById("sitemapContainer");
+  if (!sitemapContainer) return;
 
-// Base URL of your website
-const BASE_URL = "https://yourusername.github.io/explore-india/";
+  // Static pages
+  const staticPages = [
+    { name: "Home", link: "index.html" },
+    { name: "About", link: "about.html" },
+    { name: "Destinations", link: "destinations.html" },
+    { name: "Districts", link: "district.html" },
+    { name: "Contact", link: "contact.html" },
+    { name: "Login", link: "login.html" },
+    { name: "Register", link: "register.html" }
+  ];
 
-// Folder containing your HTML files
-const PAGES_DIR = "./"; // agar root me saare HTML hain
+  // Add static pages to sitemap
+  staticPages.forEach(page => {
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="${page.link}">${page.name}</a>`;
+    sitemapContainer.appendChild(li);
+  });
 
-// Function to get all HTML files
-function getHtmlFiles(dir) {
-  return fs.readdirSync(dir).filter(file => file.endsWith(".html"));
-}
+  // Dynamic pages: States & Districts
+  fetch("states.json")
+    .then(res => res.json())
+    .then(data => {
+      data.states.forEach(state => {
+        const liState = document.createElement("li");
+        liState.textContent = state;
 
-// Generate sitemap XML
-function generateSitemap() {
-  const files = getHtmlFiles(PAGES_DIR);
-  const urls = files.map(file => {
-    return `
-  <url>
-    <loc>${BASE_URL}${file}</loc>
-    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-  }).join("");
+        const ulDistricts = document.createElement("ul");
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
+        fetch(`${state}.json`)
+          .then(res => res.json())
+          .then(stateData => {
+            const districts = stateData[state];
+            districts.forEach(d => {
+              const liDistrict = document.createElement("li");
+              liDistrict.innerHTML = `<a href="district.html?state=${encodeURIComponent(state)}&district=${encodeURIComponent(d.name)}">${d.name}</a>`;
+              ulDistricts.appendChild(liDistrict);
+            });
+          })
+          .catch(err => console.error(`Error loading districts for ${state}:`, err));
 
-  fs.writeFileSync(path.join(PAGES_DIR, "sitemap.xml"), sitemap);
-  console.log("✅ sitemap.xml generated successfully!");
-}
-
-// Run the generator
-generateSitemap();
+        liState.appendChild(ulDistricts);
+        sitemapContainer.appendChild(liState);
+      });
+    })
+    .catch(err => console.error("Error loading states:", err));
+});

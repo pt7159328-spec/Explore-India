@@ -1,7 +1,7 @@
 {
   "Dadra and Nagar Haveli and Daman and Diu": [
-    { "name": "Dadra and Nagar Haveli", "description": "Tribal-dominated district, known for industries and greenery." },
-    { "name": "Daman", "description": "Coastal district with Portuguese heritage and beaches." },
-    { "name": "Diu", "description": "Small island district, famous for beaches and fort." }
+    { "name": "Dadra", "description": "Small district known for tribal culture and industries." },
+    { "name": "Daman", "description": "Coastal district famous for beaches and Portuguese heritage." },
+    { "name": "Diu", "description": "Island district with historic forts and tourist attractions." }
   ]
 }

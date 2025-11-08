@@ -1,179 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Login - Explore Our India</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Login to Explore Our India to access personalized travel guides, destinations, and hotel recommendations.">
-  <meta name="keywords" content="Login Explore Our India, India travel, tourism, user account, hotel booking, travel guide">
-  <meta name="author" content="Prakash Tiwari">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourusername.github.io/explore-india/login.html">
-
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Login - Explore Our India">
-  <meta property="og:description" content="Sign in to Explore Our India for personalized travel recommendations and guides.">
-  <meta property="og:image" content="https://source.unsplash.com/800x400/?login,travel">
-  <meta property="og:url" content="https://yourusername.github.io/explore-india/login.html">
-
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f4ff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(to right, #ff9966, #ff5e62);
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-    }
-
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
-      width: 100%;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    form:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-    }
-
-    input {
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      width: 100%;
-      transition: border 0.3s;
-    }
-    input:focus {
-      border-color: #ff9966;
-      outline: none;
-    }
-
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #1a237e;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #444;
-    }
-
-    p {
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    a {
-      color: #1a237e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: auto;
-    }
-
-    @media (max-width: 500px) {
-      header {
-        font-size: 1.2rem;
-      }
-      form {
-        padding: 20px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Our India | Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header / Navigation -->
   <header>
-    🌏 Login to Explore Our India
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
+  <!-- Login Section -->
+  <section class="login-section">
+    <h1>Login to Explore Our India</h1>
     <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required />
-      <input type="password" id="loginPassword" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="register.html">Register here</a></p>
-  </main>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
 
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#">Register here</a></p>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    © 2025 Explore Our India | Designed by Prakash Tiwari
+    <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
-  <!-- Firebase Libraries -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
+  <!-- Script -->
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyA2_pMk1wu_uEGWONmSbvVCmGp6ixUVr8Y",
-      authDomain: "exploreourindia.firebaseapp.com",
-      projectId: "exploreourindia",
-      storageBucket: "exploreourindia.firebasestorage.app",
-      messagingSenderId: "633212741399",
-      appId: "1:633212741399:web:208cb4bc7bf8d62841f952",
-      measurementId: "G-0QFH7C9G17"
-    };
+    const loginForm = document.getElementById('loginForm');
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById("loginEmail").value.trim();
-      const password = document.getElementById("loginPassword").value.trim();
 
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        alert("✅ Login successful! Welcome back to Explore Our India");
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // Simple validation (replace with backend auth later)
+      if(username === "admin" && password === "admin123") {
+        alert("Login successful!");
         window.location.href = "index.html";
-      } catch (error) {
-        alert("⚠️ " + error.message);
+      } else {
+        alert("Invalid username or password");
       }
+    });
+
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPage);
     });
   </script>
 </body>

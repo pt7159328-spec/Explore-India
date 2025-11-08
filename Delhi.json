@@ -1,15 +1,15 @@
 {
   "Delhi": [
-    { "name": "Central Delhi", "description": "Administrative and historic hub of Delhi." },
-    { "name": "East Delhi", "description": "Residential and commercial areas with Ghazipur and Mayur Vihar." },
-    { "name": "New Delhi", "description": "Capital area with Parliament, Rashtrapati Bhavan, and embassies." },
-    { "name": "North Delhi", "description": "Residential and educational district with markets." },
-    { "name": "North East Delhi", "description": "Densely populated district with residential areas." },
-    { "name": "North West Delhi", "description": "Residential and industrial areas." },
-    { "name": "Shahdara", "description": "Commercial and residential district in East Delhi." },
-    { "name": "South Delhi", "description": "Upscale residential areas and historic monuments." },
-    { "name": "South East Delhi", "description": "Industrial and residential areas with connectivity to Noida." },
-    { "name": "South West Delhi", "description": "Residential district with urban and rural mix." },
-    { "name": "West Delhi", "description": "Residential and commercial district with markets." }
+    { "name": "Central Delhi", "description": "Known for Connaught Place, administrative buildings, and heritage sites." },
+    { "name": "East Delhi", "description": "Residential and commercial area, with major markets and local attractions." },
+    { "name": "New Delhi", "description": "Capital city, houses Parliament, Rashtrapati Bhavan, and diplomatic areas." },
+    { "name": "North Delhi", "description": "Historic district with universities and old Delhi landmarks." },
+    { "name": "North East Delhi", "description": "Residential and industrial mix with cultural diversity." },
+    { "name": "North West Delhi", "description": "Residential and commercial hubs, famous for local markets." },
+    { "name": "Shahdara", "description": "Known for shopping areas, old heritage, and connectivity to NCR." },
+    { "name": "South Delhi", "description": "Upscale residential area with shopping malls, embassies, and cultural sites." },
+    { "name": "South East Delhi", "description": "Residential and commercial district with cultural landmarks." },
+    { "name": "South West Delhi", "description": "Mix of urban and rural areas, includes major institutions and residential colonies." },
+    { "name": "West Delhi", "description": "Industrial and residential district with markets and local commerce." }
   ]
 }
