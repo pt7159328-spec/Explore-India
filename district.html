@@ -45,6 +45,53 @@
   </footer>
 
   <!-- Script -->
-  <script src="script.js"></script>
+  <script>
+    const stateSelect = document.getElementById("stateSelect");
+    const districtSelect = document.getElementById("districtSelect");
+    const districtContainer = document.getElementById("districtContainer");
+
+    // Fetch states from states.json
+    fetch("data/states.json")
+      .then(res => res.json())
+      .then(data => {
+        data.states.forEach(state => {
+          const option = document.createElement("option");
+          option.value = state;
+          option.textContent = state;
+          stateSelect.appendChild(option);
+        });
+      })
+      .catch(err => console.error("Error loading states:", err));
+
+    // Load districts when a state is selected
+    stateSelect.addEventListener("change", function() {
+      const selectedState = this.value;
+      if (!selectedState) return;
+
+      // Clear previous districts
+      districtSelect.innerHTML = "<option value=''>Select District</option>";
+      districtContainer.innerHTML = "";
+
+      fetch(`data/${selectedState}.json`)
+        .then(res => res.json())
+        .then(data => {
+          const districts = data[selectedState];
+          districts.forEach(d => {
+            // Add to dropdown
+            const option = document.createElement("option");
+            option.value = d.name;
+            option.textContent = d.name;
+            districtSelect.appendChild(option);
+
+            // Add as card
+            const card = document.createElement("div");
+            card.className = "district-card";
+            card.innerHTML = `<h3>${d.name}</h3><p>${d.description}</p>`;
+            districtContainer.appendChild(card);
+          });
+        })
+        .catch(err => console.error("Error loading districts:", err));
+    });
+  </script>
 </body>
 </html>
