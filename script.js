@@ -10,7 +10,7 @@ document.querySelectorAll("nav a").forEach(link => {
 // Smooth fade-in animation
 // -----------------------------
 window.addEventListener("load", () => {
-  document.querySelectorAll(".card, .gallery div, .dev-card, .contact-section form").forEach((el, i) => {
+  document.querySelectorAll(".card, .gallery div, .dev-card, .contact-section form, .district-card").forEach((el, i) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(30px)";
     setTimeout(() => {
@@ -33,15 +33,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // -----------------------------
-// Explore Our India: Search + Load JSON
+// Explore Our India: Index + State functionality
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  // ----- INDEX.HTML -----
   const searchBox = document.getElementById("search-box");
   const locationList = document.getElementById("location-list");
 
-  // ---------- INDEX.HTML: Search States ----------
   if(searchBox && locationList){
-    // List of all 36 states
     const states = [
       "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat",
       "Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh",
@@ -51,30 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
       "Dadra and Nagar Haveli","Delhi"
     ];
 
-    // Show all states initially
-    states.forEach(state => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="state.html?state=${encodeURIComponent(state)}">${state}</a>`;
-      locationList.appendChild(li);
-    });
+    const renderStates = (list) => {
+      locationList.innerHTML = "";
+      list.forEach(state => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="state.html?state=${encodeURIComponent(state)}">${state}</a>`;
+        locationList.appendChild(li);
+      });
+      if(list.length === 0) locationList.innerHTML = "<li>No results found</li>";
+    };
 
-    // Filter on input
+    renderStates(states);
+
     searchBox.addEventListener("input", () => {
       const query = searchBox.value.toLowerCase();
-      locationList.innerHTML = "";
-      states
-        .filter(state => state.toLowerCase().includes(query))
-        .forEach(state => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="state.html?state=${encodeURIComponent(state)}">${state}</a>`;
-          locationList.appendChild(li);
-        });
-
-      if(locationList.innerHTML === "") locationList.innerHTML = "<li>No results found</li>";
+      const filtered = states.filter(state => state.toLowerCase().includes(query));
+      renderStates(filtered);
     });
   }
 
-  // ---------- STATE.HTML: Load Districts ----------
+  // ----- STATE.HTML -----
   const stateNameElement = document.getElementById("stateName");
   const districtsGrid = document.getElementById("districtsGrid");
   const districtSearch = document.getElementById("districtSearch");
@@ -90,11 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`data/${stateName}.json`)
       .then(res => res.json())
       .then(data => {
+        districtsGrid.innerHTML = "";
         data.districts.forEach(d => {
           const card = document.createElement("div");
           card.className = "district-card";
           card.innerHTML = `
-            <img src="${d.image}" alt="${d.name}">
+            <img src="${d.image || `https://source.unsplash.com/300x200/?${d.name},${stateName}`}" alt="${d.name}">
             <h3>${d.name}</h3>
             <p>${d.description}</p>
           `;
@@ -111,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       })
       .catch(err => {
-        districtsGrid.innerHTML = "<p>Data not available for this state.</p>";
+        districtsGrid.innerHTML = "<p style='text-align:center;'>Data not available for this state.</p>";
         console.error(err);
       });
   }
