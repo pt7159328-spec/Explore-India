@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore State - Explore Our India</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Explore districts and famous places of the selected Indian state.">
+<meta name="keywords" content="Indian state, districts, tourism, places to visit, Explore Our India">
+<meta name="author" content="Prakash Tiwari">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Explore State - Explore Our India">
+<meta property="og:description" content="Discover all districts and famous tourist destinations of the selected Indian state.">
+<meta property="og:image" content="https://source.unsplash.com/800x400/?india,map">
+<meta property="og:url" content="https://yourusername.github.io/explore-india/state.html">
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1 style="text-align:center; color:#ff9966;">🌏 Explore Our India</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="india.html">India</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-title">
+  <h2 id="stateName">State Name</h2>
+  <p>Explore districts and famous places in this state</p>
+</section>
+
+<section class="district-search">
+  <input type="text" id="districtSearch" placeholder="Search districts..." />
+</section>
+
+<section class="districts-grid" id="districtsGrid">
+  <!-- District cards will be injected here via JavaScript -->
+</section>
+
+<footer>
+  <p>© 2025 Explore Our India | Designed by Prakash Tiwari</p>
+</footer>
+
+<script>
+// Sample JS to dynamically load districts for a state
+
+// Example data structure (you can expand later)
+const statesData = {
+  "Rajasthan": [
+    {
+      name: "Jaipur",
+      image: "https://source.unsplash.com/300x200/?jaipur,fort",
+      description: "The Pink City famous for palaces, forts, and culture."
+    },
+    {
+      name: "Udaipur",
+      image: "https://source.unsplash.com/300x200/?udaipur,lake",
+      description: "The city of lakes, beautiful palaces, and heritage."
+    }
+    // Add more districts here
+  ],
+  "Kerala": [
+    {
+      name: "Kochi",
+      image: "https://source.unsplash.com/300x200/?kochi,backwaters",
+      description: "Famous for backwaters, culture, and historical sites."
+    }
+    // Add more districts
+  ]
+};
+
+// Get state from URL
+const params = new URLSearchParams(window.location.search);
+const state = params.get('state') || "Unknown State";
+document.getElementById('stateName').innerText = state;
+
+// Load districts
+const districtsGrid = document.getElementById('districtsGrid');
+if(statesData[state]){
+  statesData[state].forEach(d => {
+    const card = document.createElement('div');
+    card.classList.add('district-card');
+    card.innerHTML = `
+      <img src="${d.image}" alt="${d.name}">
+      <h3>${d.name}</h3>
+      <p>${d.description}</p>
+    `;
+    districtsGrid.appendChild(card);
+  });
+} else {
+  districtsGrid.innerHTML = "<p>No district data available for this state yet.</p>";
+}
+
+// Search functionality
+document.getElementById('districtSearch').addEventListener('input', function() {
+  const searchTerm = this.value.toLowerCase();
+  const cards = document.querySelectorAll('.district-card');
+  cards.forEach(card => {
+    const name = card.querySelector('h3').innerText.toLowerCase();
+    card.style.display = name.includes(searchTerm) ? 'block' : 'none';
+  });
+});
+</script>
+
+<style>
+/* Districts Grid Styling */
+.districts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+}
+.district-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.district-card:hover {
+  transform: scale(1.03);
+}
+.district-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.district-card h3 {
+  margin: 10px 0;
+  color: #1e88e5;
+}
+.district-card p {
+  padding: 10px 15px 20px;
+  color: #555;
+}
+
+/* Search Box */
+.district-search {
+  text-align: center;
+  margin: 20px 0;
+}
+#districtSearch {
+  width: 300px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+</style>
+
+</body>
+</html>

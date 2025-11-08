@@ -25,11 +25,12 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background: #f9f9f9;
     }
 
     header {
       text-align: center;
-      background: #ff9966;
+      background: linear-gradient(to right, #ff9966, #ff5e62);
       padding: 20px;
       color: white;
     }
@@ -47,6 +48,7 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     nav ul li a:hover, nav ul li a.active {
@@ -54,18 +56,26 @@
     }
 
     .contact-section {
-      max-width: 600px;
+      max-width: 650px;
       margin: 50px auto;
-      padding: 20px;
-      background: #f0f4ff;
+      padding: 30px 20px;
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
     }
 
     .contact-section h2 {
       text-align: center;
       color: #1a237e;
       margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .contact-section p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #555;
     }
 
     .contact-section form {
@@ -76,15 +86,22 @@
 
     .contact-section input, 
     .contact-section textarea {
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      width: 100%;
       font-size: 1rem;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .contact-section input:focus, 
+    .contact-section textarea:focus {
+      border-color: #ff9966;
+      outline: none;
     }
 
     .contact-section button {
-      padding: 12px;
+      padding: 14px;
       border: none;
       border-radius: 8px;
       background: #1a237e;
@@ -105,6 +122,17 @@
       padding: 20px;
       margin-top: 50px;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .contact-section {
+        margin: 30px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -123,7 +151,7 @@
 
   <section class="contact-section">
     <h2>Contact Us</h2>
-    <p style="text-align:center;">Have questions or suggestions? Reach out to us!</p>
+    <p>Have questions, suggestions, or want to collaborate? Reach out to us!</p>
     <form action="mailto:prakash@example.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>

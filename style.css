@@ -1,4 +1,4 @@
-/* 🌏 Explore Our India - Complete Style */
+/* 🌏 Explore Our India - Updated Style */
 
 /* Reset + Font */
 * {
@@ -12,17 +12,24 @@ body {
   background: #f4f6f8;
   color: #333;
   line-height: 1.6;
+  opacity: 0;
+  animation: fadeInBody 0.8s ease forwards;
+}
+
+@keyframes fadeInBody {
+  to { opacity: 1; }
 }
 
 /* ---------- HEADER ---------- */
 header {
-  background: #1e88e5;
+  background: linear-gradient(90deg, #ff9966, #ff5e62);
   color: white;
   padding: 15px 0;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 header h1 {
@@ -43,13 +50,14 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 nav a:hover,
 nav a.active {
-  text-decoration: underline;
-  color: #ffeb3b;
+  color: #fff200;
+  font-weight: 700;
+  border-bottom: 2px solid #fff200;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -79,7 +87,8 @@ nav a.active {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .hero .btn:hover {
@@ -102,13 +111,14 @@ nav a.active {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
   width: 300px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .card img {
@@ -161,6 +171,11 @@ nav a.active {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.5s ease;
+}
+
+.gallery div:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .gallery div img {
@@ -229,7 +244,7 @@ input, textarea {
   border-radius: 6px;
   font-size: 1rem;
   outline: none;
-  transition: 0.3s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus, textarea:focus {
@@ -245,7 +260,8 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 button:hover {
@@ -254,12 +270,21 @@ button:hover {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background: #1e88e5;
-  color: white;
+  background: linear-gradient(90deg, #1e88e5, #1565c0);
+  color: #fff;
   text-align: center;
-  padding: 12px;
+  padding: 20px;
   margin-top: 40px;
   font-size: 0.9rem;
+}
+
+footer a {
+  color: #ffd700;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 /* ---------- ANIMATIONS (used in JS) ---------- */

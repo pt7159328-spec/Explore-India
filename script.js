@@ -1,20 +1,42 @@
+// -----------------------------
 // Highlight the current active link
-const currentPage = window.location.pathname.split("/").pop();
+// -----------------------------
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(link => {
-  if (link.getAttribute("href") === currentPage) {
+  const href = link.getAttribute("href");
+  if (href === currentPage) {
     link.classList.add("active");
+  } else {
+    link.classList.remove("active");
   }
 });
 
-// Simple fade-in animation for cards
+// -----------------------------
+// Smooth fade-in animation for cards and gallery items
+// -----------------------------
 window.addEventListener("load", () => {
-  const cards = document.querySelectorAll(".card, .gallery div");
-  cards.forEach((card, i) => {
+  const elements = document.querySelectorAll(".card, .gallery div, .dev-card, .contact-section form");
+  
+  elements.forEach((el, i) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
     setTimeout(() => {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    }, i * 200);
+      el.style.transition = "all 0.6s ease-out";
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }, i * 150); // Slightly faster stagger
+  });
+});
+
+// Optional: Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if(target){
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 });
