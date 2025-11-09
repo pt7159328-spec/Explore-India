@@ -1,159 +1,131 @@
-// =====================================================
-// Explore Our India – Master Script (Updated for Home Page System)
-// =====================================================
-
-// -----------------------------
-// Detect environment (Local VS GitHub Pages)
-// -----------------------------
-const basePath = window.location.hostname.includes("github.io")
-  ? "https://raw.githubusercontent.com/pt7159328-spec/Explore-India/main/data/"
-  : "./data/";
-
-// -----------------------------
-// Highlight the current active link in navigation
-// -----------------------------
-const currentPage = window.location.pathname.split("/").pop().toLowerCase() || "index.html";
-document.querySelectorAll("nav a").forEach(link => {
-  const linkHref = link.getAttribute("href").split("/").pop().toLowerCase();
-  link.classList.toggle("active", linkHref === currentPage);
-});
-
-// -----------------------------
-// Smooth fade-in animation for page content
-// -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("fade-in");
 
-  // Run the Explore India system only on index.html
-  if (currentPage === "index.html" || currentPage === "") {
-    initExploreIndia();
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  // Highlight nav links
+  document.querySelectorAll("nav a").forEach(link => {
+    const linkHref = link.getAttribute("href").split("/").pop();
+    link.classList.toggle("active", linkHref === currentPage);
+  });
+
+  const basePath = window.location.hostname.includes("github.io")
+    ? "https://raw.githubusercontent.com/pt7159328-spec/Explore-India/main/data/"
+    : "./data/";
+
+  if (currentPage === "index.html") {
+    initExploreIndia(basePath);
+  }
+
+  if (currentPage === "district.html") {
+    initDistricts(basePath);
   }
 });
 
-// =====================================================
-// 🌏 MAIN FUNCTION: Explore India Home Page System
-// =====================================================
-function initExploreIndia() {
+// ======================
+// Home Page Function
+// ======================
+function initExploreIndia(basePath) {
   const statesContainer = document.getElementById("statesContainer");
   const districtsContainer = document.getElementById("districtsContainer");
   const districtInfo = document.getElementById("districtInfo");
   const searchInput = document.getElementById("searchInput");
 
-  if (!statesContainer) return;
-
-  // 1️⃣ Load all States
   fetch(`${basePath}states.json`)
     .then(res => res.json())
     .then(data => {
-      if (!data.states) throw new Error("Invalid states.json structure");
-      renderStates(data.states);
+      renderStates(data.states || []);
     })
     .catch(err => {
       statesContainer.innerHTML = `<p class="error">Error loading states: ${err.message}</p>`;
       console.error(err);
     });
 
-  // -----------------------------
-  // Render States as Cards
-  // -----------------------------
   function renderStates(states) {
     statesContainer.innerHTML = "";
-    districtsContainer?.classList.add("hidden");
-    districtInfo?.classList.add("hidden");
 
     states.forEach(state => {
       const card = document.createElement("div");
       card.className = "state-card";
-      card.innerHTML = `
-        <h3>${state}</h3>
-        <button class="btn explore-btn">Explore</button>
-      `;
-      card.querySelector(".explore-btn").addEventListener("click", () => loadDistricts(state));
+      card.innerHTML = `<h3>${state}</h3>
+                        <button class="btn explore-btn">Explore</button>`;
+
+      // Redirect to district page
+      card.querySelector(".explore-btn").addEventListener("click", () => {
+        window.location.href = `district.html?state=${encodeURIComponent(state)}`;
+      });
+
       statesContainer.appendChild(card);
     });
   }
 
-  // -----------------------------
-  // Load Districts for Selected State
-  // -----------------------------
-  function loadDistricts(stateName) {
-    districtsContainer.innerHTML = "<p>Loading districts...</p>";
-    districtsContainer.classList.remove("hidden");
-    districtInfo.classList.add("hidden");
-
-    // Fetch JSON with exact file name (case-sensitive)
-    fetch(`${basePath}${stateName}.json`)
-      .then(res => res.json())
-      .then(data => {
-        if (!Array.isArray(data)) throw new Error("Invalid district data");
-        renderDistricts(data, stateName);
-      })
-      .catch(err => {
-        districtsContainer.innerHTML = `<p class="error">Error loading ${stateName} districts: ${err.message}</p>`;
-        console.error(err);
-      });
-  }
-
-  // -----------------------------
-  // Render Districts Grid
-  // -----------------------------
-  function renderDistricts(districts, stateName) {
-    statesContainer.classList.add("hidden");
-    districtsContainer.innerHTML = "";
-    districtInfo.classList.add("hidden");
-
-    const backBtn = document.createElement("button");
-    backBtn.textContent = "← Back to States";
-    backBtn.className = "btn back-btn";
-    backBtn.addEventListener("click", () => {
-      statesContainer.classList.remove("hidden");
-      districtsContainer.classList.add("hidden");
-    });
-    districtsContainer.appendChild(backBtn);
-
-    districts.forEach(d => {
-      const card = document.createElement("div");
-      card.className = "district-card";
-      card.innerHTML = `
-        <img src="${d.image || 'images/placeholder.jpg'}" alt="${d.name}">
-        <h3>${d.name}</h3>
-        <button class="btn info-btn">View Info</button>
-      `;
-      card.querySelector(".info-btn").addEventListener("click", () => showDistrictInfo(d, stateName));
-      districtsContainer.appendChild(card);
-    });
-  }
-
-  // -----------------------------
-  // Show District Info
-  // -----------------------------
-  function showDistrictInfo(district, stateName) {
-    districtsContainer.classList.add("hidden");
-    districtInfo.classList.remove("hidden");
-
-    districtInfo.innerHTML = `
-      <button class="btn back-btn">← Back to ${stateName} Districts</button>
-      <h2>${district.name}</h2>
-      <img src="${district.image || 'images/placeholder.jpg'}" alt="${district.name}">
-      <p>${district.info || "No detailed information available."}</p>
-    `;
-
-    districtInfo.querySelector(".back-btn").addEventListener("click", () => {
-      districtsContainer.classList.remove("hidden");
-      districtInfo.classList.add("hidden");
-    });
-  }
-
-  // -----------------------------
-  // Search Functionality (Live Filter)
-  // -----------------------------
+  // Live search
   searchInput?.addEventListener("input", e => {
-    const term = e.target.value.toLowerCase().trim();
-    const allCards = document.querySelectorAll(".state-card, .district-card");
-
-    allCards.forEach(card => {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll(".state-card, .district-card").forEach(card => {
       const name = card.querySelector("h3").textContent.toLowerCase();
       card.style.display = name.includes(term) ? "block" : "none";
     });
   });
+}
+
+// ======================
+// District Page Function
+// ======================
+function initDistricts(basePath) {
+  const stateSelect = document.getElementById("stateSelect");
+  const districtSelect = document.getElementById("districtSelect");
+  const districtContainer = document.getElementById("districtContainer");
+
+  fetch(`${basePath}states.json`)
+    .then(res => res.json())
+    .then(data => {
+      const states = data.states || [];
+      states.forEach(state => {
+        const opt = document.createElement("option");
+        opt.value = state;
+        opt.textContent = state;
+        stateSelect.appendChild(opt);
+      });
+
+      // Load state from query string
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedState = urlParams.get("state");
+      if (selectedState) {
+        stateSelect.value = selectedState;
+        loadDistricts(selectedState);
+      }
+    });
+
+  stateSelect.addEventListener("change", () => {
+    const selectedState = stateSelect.value.trim();
+    if (selectedState) loadDistricts(selectedState);
+  });
+
+  function loadDistricts(state) {
+    districtSelect.innerHTML = "<option value=''>Select District</option>";
+    districtContainer.innerHTML = "<p>Loading districts...</p>";
+
+    fetch(`${basePath}${state.toLowerCase()}.json`)
+      .then(res => res.json())
+      .then(data => {
+        districtContainer.innerHTML = "";
+        const districts = data[state] || data;
+        districts.forEach(d => {
+          const opt = document.createElement("option");
+          opt.value = d.name;
+          opt.textContent = d.name;
+          districtSelect.appendChild(opt);
+
+          const card = document.createElement("div");
+          card.className = "district-card";
+          card.innerHTML = `<h3>${d.name}</h3>
+                            <p>${d.info || d.description || "No info available."}</p>`;
+          districtContainer.appendChild(card);
+        });
+      })
+      .catch(err => {
+        districtContainer.innerHTML = `<p style="color:red;">Error loading districts</p>`;
+      });
+  }
 }

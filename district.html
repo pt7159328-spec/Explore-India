@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header / Navigation -->
   <header>
     <nav>
       <ul>
@@ -20,123 +19,25 @@
     </nav>
   </header>
 
-  <!-- Districts Section -->
   <section class="districts">
     <h1>Districts</h1>
     <p>Select a state from the list below to explore its districts.</p>
 
-    <!-- State Dropdown -->
     <select id="stateSelect">
       <option value="">Select State</option>
     </select>
 
-    <!-- District Dropdown -->
     <select id="districtSelect">
       <option value="">Select District</option>
     </select>
 
-    <!-- District Cards -->
     <div id="districtContainer" class="districts-grid"></div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
-  <!-- Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
-
-      const stateSelect = document.getElementById("stateSelect");
-      const districtSelect = document.getElementById("districtSelect");
-      const districtContainer = document.getElementById("districtContainer");
-
-      // Highlight current nav link
-      const currentPage = window.location.pathname.split("/").pop().toLowerCase();
-      document.querySelectorAll("nav a").forEach(link => {
-        const linkHref = link.getAttribute("href").split("/").pop().toLowerCase();
-        link.classList.toggle("active", linkHref === currentPage);
-      });
-
-      // ✅ Detect environment (Local VS GitHub Pages)
-      const basePath = window.location.hostname.includes("github.io")
-        ? "https://raw.githubusercontent.com/pt7159328-spec/Explore-India/main/data/"
-        : "./data/";
-
-      // -----------------------------
-      // Load States List
-      // -----------------------------
-      fetch(`${basePath}states.json`)
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          if (!data.states || !Array.isArray(data.states)) {
-            throw new Error("Invalid states.json structure");
-          }
-
-          data.states.forEach(state => {
-            const opt = document.createElement("option");
-            opt.value = state;
-            opt.textContent = state;
-            stateSelect.appendChild(opt);
-          });
-        })
-        .catch(err => {
-          console.error("❌ Error loading states:", err);
-          districtContainer.innerHTML = `<p style="color:red;">⚠️ States load nahi ho paayi. File ka path check karein.</p>`;
-        });
-
-      // -----------------------------
-      // Load Districts on State Selection
-      // -----------------------------
-      stateSelect.addEventListener("change", () => {
-        const selectedState = stateSelect.value.trim();
-        if (!selectedState) return;
-
-        districtSelect.innerHTML = "<option value=''>Select District</option>";
-        districtContainer.innerHTML = "<p>Loading districts...</p>";
-
-        fetch(`${basePath}${encodeURIComponent(selectedState.toLowerCase())}.json`)
-          .then(res => {
-            if (!res.ok) throw new Error(`File not found: ${selectedState}.json`);
-            return res.json();
-          })
-          .then(data => {
-            districtContainer.innerHTML = "";
-
-            const districts = data[selectedState] || data; // fallback if JSON structure is array
-            if (!districts || !Array.isArray(districts)) {
-              districtContainer.innerHTML = `<p style="color:red;">⚠️ No districts found for ${selectedState}</p>`;
-              return;
-            }
-
-            districts.forEach(d => {
-              // Add to dropdown
-              const option = document.createElement("option");
-              option.value = d.name;
-              option.textContent = d.name;
-              districtSelect.appendChild(option);
-
-              // Add district card
-              const card = document.createElement("div");
-              card.className = "district-card";
-              card.innerHTML = `
-                <h3>${d.name}</h3>
-                <p>${d.info || d.description || "No description available."}</p>
-              `;
-              districtContainer.appendChild(card);
-            });
-          })
-          .catch(err => {
-            console.error("❌ Error loading districts:", err);
-            districtContainer.innerHTML = `<p style="color:red;">Error loading districts for ${selectedState}</p>`;
-          });
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

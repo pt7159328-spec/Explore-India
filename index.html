@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header / Navigation -->
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
         <li><a href="hotels.html">Hotels</a></li>
         <li><a href="about.html">About</a></li>
@@ -20,44 +19,28 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to Explore Our India</h1>
     <p>Discover the beauty, culture, and heritage of India.</p>
     <a href="#explore" class="btn">Explore Now</a>
   </section>
 
-  <!-- Explore Section (States → Districts → Info) -->
   <section id="explore" class="explore-section">
     <h2>Explore States & Districts</h2>
 
-    <!-- 🔍 Search Bar -->
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search State or District...">
     </div>
 
-    <!-- 🗺️ States Container -->
-    <div id="statesContainer" class="states-grid">
-      <!-- States will load dynamically -->
-    </div>
-
-    <!-- 📍 Districts Container -->
-    <div id="districtsContainer" class="districts-grid hidden">
-      <!-- Districts will load dynamically -->
-    </div>
-
-    <!-- ℹ️ District Info Container -->
-    <div id="districtInfo" class="district-info hidden">
-      <!-- Selected district details will appear here -->
-    </div>
+    <div id="statesContainer" class="states-grid"></div>
+    <div id="districtsContainer" class="districts-grid hidden"></div>
+    <div id="districtInfo" class="district-info hidden"></div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
