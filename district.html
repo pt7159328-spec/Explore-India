@@ -50,11 +50,17 @@
     const districtSelect = document.getElementById("districtSelect");
     const districtContainer = document.getElementById("districtContainer");
 
+    // ✅ Detect correct base path for GitHub Pages
+    const basePath = window.location.hostname.includes("github.io") ? "./data/" : "data/";
+
     // -----------------------------
     // Load states from data/states.json
     // -----------------------------
-    fetch("data/states.json")
-      .then(res => res.json())
+    fetch(`${basePath}states.json`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! (${res.status})`);
+        return res.json();
+      })
       .then(data => {
         data.states.forEach(state => {
           const option = document.createElement("option");
@@ -63,7 +69,7 @@
           stateSelect.appendChild(option);
         });
       })
-      .catch(err => console.error("Error loading states:", err));
+      .catch(err => console.error("❌ Error loading states:", err));
 
     // -----------------------------
     // Load districts when a state is selected
@@ -72,31 +78,31 @@
       const selectedState = this.value;
       if (!selectedState) return;
 
-      // Clear previous data
       districtSelect.innerHTML = "<option value=''>Select District</option>";
       districtContainer.innerHTML = "";
 
-      // Fetch district data from data folder
-      fetch(`data/${selectedState}.json`)
-        .then(res => res.json())
+      fetch(`${basePath}${selectedState}.json`)
+        .then(res => {
+          if (!res.ok) throw new Error(`File not found: ${selectedState}.json`);
+          return res.json();
+        })
         .then(data => {
           const districts = data[selectedState];
+          if (!districts) throw new Error(`No districts found for ${selectedState}`);
 
           districts.forEach(d => {
-            // Add to district dropdown
             const option = document.createElement("option");
             option.value = d.name;
             option.textContent = d.name;
             districtSelect.appendChild(option);
 
-            // Add district card
             const card = document.createElement("div");
             card.className = "district-card";
             card.innerHTML = `<h3>${d.name}</h3><p>${d.description}</p>`;
             districtContainer.appendChild(card);
           });
         })
-        .catch(err => console.error("Error loading districts:", err));
+        .catch(err => console.error("❌ Error loading districts:", err));
     });
   </script>
 </body>
