@@ -24,14 +24,31 @@
   <section class="hero">
     <h1>Welcome to Explore Our India</h1>
     <p>Discover the beauty, culture, and heritage of India.</p>
-    <a href="destinations.html" class="btn">Explore Destinations</a>
+    <a href="#explore" class="btn">Explore Now</a>
   </section>
 
-  <!-- Featured States Section -->
-  <section class="featured-states">
-    <h2>Popular States to Explore</h2>
-    <div class="states-grid" id="statesGrid">
-      <!-- States will be dynamically loaded here -->
+  <!-- Explore Section (States → Districts → Info) -->
+  <section id="explore" class="explore-section">
+    <h2>Explore States & Districts</h2>
+
+    <!-- 🔍 Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search State or District...">
+    </div>
+
+    <!-- 🗺️ States Container -->
+    <div id="statesContainer" class="states-grid">
+      <!-- States will load dynamically -->
+    </div>
+
+    <!-- 📍 Districts Container -->
+    <div id="districtsContainer" class="districts-grid hidden">
+      <!-- Districts will load dynamically -->
+    </div>
+
+    <!-- ℹ️ District Info Container -->
+    <div id="districtInfo" class="district-info hidden">
+      <!-- Selected district details will appear here -->
     </div>
   </section>
 
@@ -40,21 +57,9 @@
     <p>© 2025 Explore Our India | Designed & Developed by Prakash Tiwari</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="states.js"></script>
+  <!-- Script -->
+  <script src="script.js"></script>
   <script>
-    // Load states dynamically from states.js
-    const statesGrid = document.getElementById("statesGrid");
-    if (window.states) {
-      states.states.forEach(state => {
-        const div = document.createElement("div");
-        div.className = "state-card";
-        div.innerHTML = `<h3>${state}</h3>
-                         <a href="state.html?state=${encodeURIComponent(state)}" class="btn">Explore</a>`;
-        statesGrid.appendChild(div);
-      });
-    }
-
     // Highlight current nav link
     const currentPage = window.location.pathname.split("/").pop();
     document.querySelectorAll("nav a").forEach(link => {
