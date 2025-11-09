@@ -12,9 +12,10 @@ const basePath = window.location.hostname.includes("github.io")
 // -----------------------------
 // Highlight the current active link in navigation
 // -----------------------------
-const currentPage = window.location.pathname.split("/").pop() || "index.html";
+const currentPage = window.location.pathname.split("/").pop().toLowerCase() || "index.html";
 document.querySelectorAll("nav a").forEach(link => {
-  link.classList.toggle("active", link.getAttribute("href") === currentPage);
+  const linkHref = link.getAttribute("href").split("/").pop().toLowerCase();
+  link.classList.toggle("active", linkHref === currentPage);
 });
 
 // -----------------------------
@@ -57,8 +58,8 @@ function initExploreIndia() {
   // -----------------------------
   function renderStates(states) {
     statesContainer.innerHTML = "";
-    districtsContainer.classList.add("hidden");
-    districtInfo.classList.add("hidden");
+    districtsContainer?.classList.add("hidden");
+    districtInfo?.classList.add("hidden");
 
     states.forEach(state => {
       const card = document.createElement("div");
@@ -80,7 +81,8 @@ function initExploreIndia() {
     districtsContainer.classList.remove("hidden");
     districtInfo.classList.add("hidden");
 
-    fetch(`${basePath}${stateName.toLowerCase()}.json`)
+    // Fetch JSON with exact file name (case-sensitive)
+    fetch(`${basePath}${stateName}.json`)
       .then(res => res.json())
       .then(data => {
         if (!Array.isArray(data)) throw new Error("Invalid district data");

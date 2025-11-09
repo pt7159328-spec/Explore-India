@@ -11,7 +11,7 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
         <li><a href="hotels.html">Hotels</a></li>
         <li><a href="about.html">About</a></li>
@@ -59,12 +59,5 @@
 
   <!-- Script -->
   <script src="script.js"></script>
-  <script>
-    // Highlight current nav link
-    const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll("nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPage);
-    });
-  </script>
 </body>
 </html>

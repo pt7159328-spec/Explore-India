@@ -109,8 +109,8 @@ nav a.active {
 }
 
 /* ------------------ States & Districts Grid ------------------ */
-#statesGrid,
-#districtsGrid {
+.states-grid,
+.districts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
@@ -195,5 +195,8 @@ footer {
   }
   .search-bar input {
     width: 85%;
+  }
+  nav {
+    gap: 10px;
   }
 }
