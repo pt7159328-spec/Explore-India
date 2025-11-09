@@ -1,5 +1,15 @@
 // -----------------------------
-// Navigation: Highlight current page
+// Common Elements
+// -----------------------------
+const stateSelect = document.getElementById("stateSelect");
+const districtSelect = document.getElementById("districtSelect");
+const districtContainer = document.getElementById("districtContainer");
+
+// Detect base path (GitHub Pages or local)
+const basePath = window.location.hostname.includes("github.io") ? "./data/" : "data/";
+
+// -----------------------------
+// Highlight the current active link
 // -----------------------------
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 document.querySelectorAll("nav a").forEach(link => {
@@ -7,99 +17,105 @@ document.querySelectorAll("nav a").forEach(link => {
 });
 
 // -----------------------------
-// Smooth fade-in animation for page load
+// Smooth fade-in animation
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
   document.body.style.opacity = 0;
   setTimeout(() => {
-    document.body.style.transition = "opacity 1s";
+    document.body.style.transition = "opacity 0.8s ease";
     document.body.style.opacity = 1;
-  }, 100);
+  }, 50);
 });
 
 // -----------------------------
-// Dynamic States and Districts
+// Load States from states.json
 // -----------------------------
-const stateSelect = document.getElementById("stateSelect");
-const districtSelect = document.getElementById("districtSelect");
-const districtContainer = document.getElementById("districtContainer");
-
-// Fetch states from data/states.json
-fetch("data/states.json")
-  .then(response => response.json())
-  .then(data => {
-    data.states.forEach(state => {
-      const option = document.createElement("option");
-      option.value = state;
-      option.textContent = state;
-      stateSelect.appendChild(option);
-    });
-  })
-  .catch(err => console.error("Error loading states:", err));
-
-// Load districts when a state is selected
-stateSelect.addEventListener("change", function() {
-  const selectedState = this.value;
-  if (!selectedState) return;
-
-  // Clear previous districts
-  districtSelect.innerHTML = "<option value=''>Select District</option>";
-  districtContainer.innerHTML = "";
-
-  fetch(`data/${selectedState}.json`)
-    .then(response => {
-      if (!response.ok) throw new Error("State JSON not found");
-      return response.json();
+if (stateSelect) {
+  fetch(`${basePath}states.json`)
+    .then(res => {
+      if (!res.ok) throw new Error(`Error loading states.json (${res.status})`);
+      return res.json();
     })
     .then(data => {
-      const districts = data[selectedState];
-      districts.forEach(d => {
-        // Add district to dropdown
-        const option = document.createElement("option");
-        option.value = d.name;
-        option.textContent = d.name;
-        districtSelect.appendChild(option);
+      if (!data.states || data.states.length === 0) throw new Error("No states found in states.json");
 
-        // Add district card
-        const card = document.createElement("div");
-        card.className = "district-card";
-        card.innerHTML = `<h3>${d.name}</h3><p>${d.description}</p>`;
-        districtContainer.appendChild(card);
+      // Add states to dropdown
+      data.states.forEach(state => {
+        const option = document.createElement("option");
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
       });
     })
-    .catch(err => console.error("Error loading districts:", err));
-});
+    .catch(err => {
+      console.error("❌ Error loading states:", err);
+      alert("Unable to load states list. Please check your data folder.");
+    });
+}
 
 // -----------------------------
-// Simple Search Functionality
+// Load Districts when State selected
 // -----------------------------
-const searchInput = document.getElementById("searchInput");
-const searchResults = document.getElementById("searchResults");
+if (stateSelect && districtSelect && districtContainer) {
+  stateSelect.addEventListener("change", function () {
+    const selectedState = this.value.trim();
+    if (!selectedState) {
+      districtSelect.innerHTML = "<option value=''>Select District</option>";
+      districtContainer.innerHTML = "";
+      return;
+    }
 
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    searchResults.innerHTML = "";
+    // Clear previous data
+    districtSelect.innerHTML = "<option value=''>Select District</option>";
+    districtContainer.innerHTML = "<p class='loading-text'>Loading districts...</p>";
 
-    if (query.length < 2) return;
-
-    fetch("data/states.json")
-      .then(res => res.json())
+    // Fetch district data from JSON file
+    fetch(`${basePath}${selectedState}.json`)
+      .then(res => {
+        if (!res.ok) throw new Error(`File not found: ${selectedState}.json`);
+        return res.json();
+      })
       .then(data => {
-        data.states.forEach(state => {
-          fetch(`data/${state}.json`)
-            .then(res => res.json())
-            .then(stateData => {
-              stateData[state].forEach(d => {
-                if (d.name.toLowerCase().includes(query)) {
-                  const div = document.createElement("div");
-                  div.className = "search-item";
-                  div.textContent = `${d.name} (${state})`;
-                  searchResults.appendChild(div);
-                }
-              });
-            });
+        const districts = data[selectedState];
+        if (!districts || districts.length === 0)
+          throw new Error(`No districts found for ${selectedState}`);
+
+        // Clear loading text
+        districtContainer.innerHTML = "";
+
+        districts.forEach(d => {
+          // Add to dropdown
+          const option = document.createElement("option");
+          option.value = d.name;
+          option.textContent = d.name;
+          districtSelect.appendChild(option);
+
+          // Add district card
+          const card = document.createElement("div");
+          card.className = "district-card";
+          card.innerHTML = `
+            <h3>${d.name}</h3>
+            <p>${d.description}</p>
+          `;
+          districtContainer.appendChild(card);
         });
+      })
+      .catch(err => {
+        console.error("❌ Error loading districts:", err);
+        districtContainer.innerHTML = `<p class="error-text">Unable to load districts for <strong>${selectedState}</strong>. Please check the JSON file.</p>`;
       });
+  });
+}
+
+// -----------------------------
+// Optional: When a District is Selected
+// (You can extend this later to show district info, map, etc.)
+// -----------------------------
+if (districtSelect) {
+  districtSelect.addEventListener("change", function () {
+    const selectedDistrict = this.value;
+    if (selectedDistrict) {
+      console.log(`You selected district: ${selectedDistrict}`);
+    }
   });
 }
