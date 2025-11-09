@@ -35,11 +35,7 @@
       <option value="">Select District</option>
     </select>
 
-    <!-- Search Box -->
-    <input type="text" id="searchInput" placeholder="Search district...">
-    <div id="searchResults"></div>
-
-    <!-- District Cards Container -->
+    <!-- District Cards -->
     <div id="districtContainer" class="districts-grid"></div>
   </section>
 
@@ -49,6 +45,59 @@
   </footer>
 
   <!-- Script -->
-  <script src="script.js"></script>
+  <script>
+    const stateSelect = document.getElementById("stateSelect");
+    const districtSelect = document.getElementById("districtSelect");
+    const districtContainer = document.getElementById("districtContainer");
+
+    // -----------------------------
+    // Load states from data/states.json
+    // -----------------------------
+    fetch("data/states.json")
+      .then(res => res.json())
+      .then(data => {
+        data.states.forEach(state => {
+          const option = document.createElement("option");
+          option.value = state;
+          option.textContent = state;
+          stateSelect.appendChild(option);
+        });
+      })
+      .catch(err => console.error("Error loading states:", err));
+
+    // -----------------------------
+    // Load districts when a state is selected
+    // -----------------------------
+    stateSelect.addEventListener("change", function() {
+      const selectedState = this.value;
+      if (!selectedState) return;
+
+      // Clear previous data
+      districtSelect.innerHTML = "<option value=''>Select District</option>";
+      districtContainer.innerHTML = "";
+
+      // Fetch district data from data folder
+      fetch(`data/${selectedState}.json`)
+        .then(res => res.json())
+        .then(data => {
+          const districts = data[selectedState];
+
+          districts.forEach(d => {
+            // Add to district dropdown
+            const option = document.createElement("option");
+            option.value = d.name;
+            option.textContent = d.name;
+            districtSelect.appendChild(option);
+
+            // Add district card
+            const card = document.createElement("div");
+            card.className = "district-card";
+            card.innerHTML = `<h3>${d.name}</h3><p>${d.description}</p>`;
+            districtContainer.appendChild(card);
+          });
+        })
+        .catch(err => console.error("Error loading districts:", err));
+    });
+  </script>
 </body>
 </html>
