@@ -1,25 +1,33 @@
-// -----------------------------
-// Detect environment (Local or GitHub Pages)
-// -----------------------------
-let basePath;
-if (window.location.hostname.includes("github.io")) {
-  // ✅ GitHub Pages par hosted JSON files ka path
-  basePath = "https://raw.githubusercontent.com/pt7159328-spec/Explore-India/main/data/";
-} else {
-  // ✅ Local VS Code ke liye normal data folder
-  basePath = "data/";
-}
+// =====================================================
+// Explore Our India – Master Script (Ready for GitHub + Local)
+// =====================================================
 
 // -----------------------------
-// DOM elements
+// Detect environment (Local VS GitHub Pages)
+// -----------------------------
+const basePath = window.location.hostname.includes("github.io")
+  ? "https://raw.githubusercontent.com/pt7159328-spec/Explore-India/main/"
+  : "./";
+
+// -----------------------------
+// Highlight the current active link in navigation
+// -----------------------------
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll("nav a").forEach(link => {
+  link.classList.toggle("active", link.getAttribute("href") === currentPage);
+});
+
+// -----------------------------
+// Smooth fade-in animation for page content
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+});
+
+// -----------------------------
+// Load states dynamically (if stateSelect exists)
 // -----------------------------
 const stateSelect = document.getElementById("stateSelect");
-const districtSelect = document.getElementById("districtSelect");
-const districtContainer = document.getElementById("districtContainer");
-
-// -----------------------------
-// Load all states from states.json
-// -----------------------------
 if (stateSelect) {
   fetch(`${basePath}states.json`)
     .then(res => {
@@ -27,6 +35,10 @@ if (stateSelect) {
       return res.json();
     })
     .then(data => {
+      if (!data.states || !Array.isArray(data.states)) {
+        throw new Error("Invalid states.json format");
+      }
+
       data.states.forEach(state => {
         const opt = document.createElement("option");
         opt.value = state;
@@ -36,51 +48,21 @@ if (stateSelect) {
     })
     .catch(err => {
       console.error("❌ Error loading states:", err);
-      alert("States load nahi ho paayi. JSON file ka path check karein.");
     });
 }
 
 // -----------------------------
-// Load districts of selected state
+// Load districts dynamically (if districtSelect exists)
 // -----------------------------
+const districtSelect = document.getElementById("districtSelect");
+const districtContainer = document.getElementById("districtContainer");
+
 if (stateSelect && districtSelect && districtContainer) {
   stateSelect.addEventListener("change", () => {
-    const selectedState = stateSelect.value;
+    const selectedState = stateSelect.value.trim();
     if (!selectedState) return;
 
     districtSelect.innerHTML = "<option value=''>Select District</option>";
     districtContainer.innerHTML = "<p>Loading districts...</p>";
 
-    fetch(`${basePath}${selectedState}.json`)
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        districtContainer.innerHTML = "";
-        const districts = data[selectedState];
-        if (!districts) {
-          districtContainer.innerHTML = `<p style="color:red;">No districts found for ${selectedState}</p>`;
-          return;
-        }
-
-        districts.forEach(d => {
-          // Add to dropdown
-          const opt = document.createElement("option");
-          opt.value = d.name;
-          opt.textContent = d.name;
-          districtSelect.appendChild(opt);
-
-          // Add district card
-          const card = document.createElement("div");
-          card.className = "district-card";
-          card.innerHTML = `<h3>${d.name}</h3><p>${d.description}</p>`;
-          districtContainer.appendChild(card);
-        });
-      })
-      .catch(err => {
-        console.error("❌ Error loading districts:", err);
-        districtContainer.innerHTML = `<p style="color:red;">Error loading districts for ${selectedState}</p>`;
-      });
-  });
-}
+    fetch(`${basePath}${encodeURIComponent
