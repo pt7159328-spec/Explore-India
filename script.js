@@ -24,7 +24,7 @@ const stateSelect = document.getElementById("stateSelect");
 const districtSelect = document.getElementById("districtSelect");
 const districtContainer = document.getElementById("districtContainer");
 
-// Fetch states from states.json in /data folder
+// Fetch states from data/states.json
 fetch("data/states.json")
   .then(response => response.json())
   .then(data => {
@@ -47,7 +47,10 @@ stateSelect.addEventListener("change", function() {
   districtContainer.innerHTML = "";
 
   fetch(`data/${selectedState}.json`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error("State JSON not found");
+      return response.json();
+    })
     .then(data => {
       const districts = data[selectedState];
       districts.forEach(d => {
@@ -73,12 +76,12 @@ stateSelect.addEventListener("change", function() {
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 
-if(searchInput){
+if (searchInput) {
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase();
     searchResults.innerHTML = "";
 
-    if(query.length < 2) return; // Minimum 2 characters to search
+    if (query.length < 2) return;
 
     fetch("data/states.json")
       .then(res => res.json())
@@ -87,9 +90,8 @@ if(searchInput){
           fetch(`data/${state}.json`)
             .then(res => res.json())
             .then(stateData => {
-              const districts = stateData[state];
-              districts.forEach(d => {
-                if(d.name.toLowerCase().includes(query)){
+              stateData[state].forEach(d => {
+                if (d.name.toLowerCase().includes(query)) {
                   const div = document.createElement("div");
                   div.className = "search-item";
                   div.textContent = `${d.name} (${state})`;
